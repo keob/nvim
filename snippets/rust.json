@@ -1,0 +1,382 @@
+{
+    "allow": {
+        "prefix": "allow",
+        "body": [
+            "#![allow(${0})]"
+        ],
+        "description": "#![allow()]"
+    },
+    "deny": {
+        "prefix": "deny",
+        "body": [
+            "#![deny(${0})]"
+        ],
+        "description": "#![deny()]"
+    },
+    "macro_use": {
+        "prefix": "mau",
+        "body": [
+            "#[macro_use(${0})]"
+        ],
+        "description": "#[macro_use()]"
+    },
+    "macro_export": {
+        "prefix": "mae",
+        "body": [
+            "#[macro_export]$0"
+        ],
+        "description": "#[macro_export]"
+    },
+    "cfg": {
+        "prefix": "cfg",
+        "body": [
+            "#[cfg(${0})]"
+        ],
+        "description": "#[cfg()]"
+    },
+    "cfg_attr": {
+        "prefix": "cfga",
+        "body": [
+            "#[cfg_attr(${1}, ${0})]"
+        ],
+        "description": "#[cfg_attr()]"
+    },
+    "cfg!": {
+        "prefix": "mcfg",
+        "body": [
+            "cfg!(${0})"
+        ],
+        "description": "cfg macro"
+    },
+    "format": {
+        "prefix": "format",
+        "body": [
+            "format!(\"${0}\")"
+        ],
+        "description": "format macro"
+    },
+    "panic": {
+        "prefix": "panic",
+        "body": [
+            "panic!(\"${0}\");"
+        ],
+        "description": "panic macro"
+    },
+    "print": {
+        "prefix": "pt",
+        "body": [
+            "print!(\"${0}\")"
+        ],
+        "description": "print macro"
+    },
+    "print format": {
+        "prefix": "pf",
+        "body": [
+            "print!(\"{$1}\", $0)"
+        ],
+        "description": "print format macro"
+    },
+    "println": {
+        "prefix": "pln",
+        "body": [
+            "println!(\"${0}\")"
+        ],
+        "description": "println macro"
+    },
+    "println format": {
+        "prefix": "plf",
+        "body": [
+            "println!(\"{$1}\", $0)"
+        ],
+        "description": "println format macro"
+    },
+    "stringify": {
+        "prefix": "strify",
+        "body": [
+            "stringify!(${0})"
+        ],
+        "description": "stringify macro"
+    },
+    "vec": {
+        "prefix": "vec",
+        "body": [
+            "vec![$0]"
+        ],
+        "description": "vec macro"
+    },
+    "write": {
+        "prefix": "write",
+        "body": [
+            "write!(${1}, \"${0}\")"
+        ],
+        "description": "write macro"
+    },
+    "writeln": {
+        "prefix": "writeln",
+        "body": [
+            "writeln!(${1}, \"${0}\")"
+        ],
+        "description": "writeln macro"
+    },
+    "Err": {
+        "prefix": "Err",
+        "body": [
+            "Err(${0})"
+        ],
+        "description": "Err"
+    },
+    "Ok": {
+        "prefix": "Ok",
+        "body": [
+            "Ok(${0:result})"
+        ],
+        "description": "Ok"
+    },
+    "Some": {
+        "prefix": "Some",
+        "body": [
+            "Some(${0})"
+        ],
+        "description": "Some"
+    },
+    "bench": {
+        "prefix": "bench",
+        "body": [
+            "#[bench]",
+            "fn ${1:name}(b: &mut test::Bencher) {",
+            "    ${2:b.iter(|| $0)}",
+            "}"
+        ],
+        "description": "bench item"
+    },
+    "const": {
+        "prefix": "const",
+        "body": [
+            "const ${1:CONST}: ${2:Type} = ${0:init};"
+        ],
+        "description": "const"
+    },
+    "derive": {
+        "prefix": "derive",
+        "body": [
+            "#[derive(${0})]"
+        ],
+        "description": "#[derive()]"
+    },
+    "else": {
+        "prefix": "else",
+        "body": [
+            "else {",
+            "    $0",
+            "}"
+        ],
+        "description": "else"
+    },
+    "enum": {
+        "prefix": "enum",
+        "body": [
+            "enum ${1:Name} {",
+            "    ${0:Variant},",
+            "}"
+        ],
+        "description": "enum"
+    },
+    "fn": {
+        "prefix": "fn",
+        "body": [
+            "fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
+            "    $0",
+            "}"
+        ],
+        "description": "function"
+    },
+    "for": {
+        "prefix": "for",
+        "body": [
+            "for ${1:pat} in ${2:expr} {",
+            "    $0",
+            "}"
+        ],
+        "description": "for in loop"
+    },
+    "if-let": {
+        "prefix": "iflet",
+        "body": [
+            "if let ${1:Some(pat)} = ${2:expr} {",
+            "    $0",
+            "}"
+        ],
+        "description": "if let"
+    },
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if ${1:condition} {",
+            "    $0",
+            "}"
+        ],
+        "description": "if"
+    },
+    "impl-trait": {
+        "prefix": "implt",
+        "body": [
+            "impl ${1:Trait} for ${2:Type} {",
+            "    $0",
+            "}"
+        ],
+        "description": "impl trait"
+    },
+    "impl": {
+        "prefix": "impl",
+        "body": [
+            "impl ${1:Type} {",
+            "    $0",
+            "}"
+        ],
+        "description": "impl"
+    },
+    "inline-fn": {
+        "prefix": "infn",
+        "body": [
+            "#[inline]",
+            "pub fn ${1:name}() {",
+            "    $0",
+            "}"
+        ],
+        "description": "inline function"
+    },
+    "let": {
+        "prefix": "let",
+        "body": [
+            "let ${1:pat} = ${0:expr};"
+        ],
+        "description": "let"
+    },
+    "loop": {
+        "prefix": "loop",
+        "body": [
+            "loop {",
+            "    $0",
+            "}"
+        ],
+        "description": "loop"
+    },
+    "macro_rules": {
+        "prefix": "mru",
+        "body": [
+            "macro_rules! ${1:name} {",
+            "    (${2}) => (${0})",
+            "}"
+        ],
+        "description": "macro rules"
+    },
+    "main": {
+        "prefix": "main",
+        "body": [
+            "fn main() {",
+            "    $0",
+            "}"
+        ],
+        "description": "main function"
+    },
+    "match": {
+        "prefix": "match",
+        "body": [
+            "match ${1:expr} {",
+            "    ${2:Some(expr)} => ${3:expr},",
+            "    ${4:None} => ${0:expr},",
+            "}"
+        ],
+        "description": "match"
+    },
+    "mod": {
+        "prefix": "mod",
+        "body": [
+            "mod ${0:name};"
+        ],
+        "description": "mod"
+    },
+    "mod-block": {
+        "prefix": "modb",
+        "body": [
+            "mod ${1:name} {",
+            "    $0",
+            "}"
+        ],
+        "description": "mod block"
+    },
+    "static": {
+        "prefix": "static",
+        "body": [
+            "static ${1:STATIC}: ${2:Type} = ${0:init};"
+        ],
+        "description": "static"
+    },
+    "struct-tuple": {
+        "prefix": "stt",
+        "body": [
+            "struct ${1:Name}(${0:Type});"
+        ],
+        "description": "tuple struct"
+    },
+    "struct-unit": {
+        "prefix": "stu",
+        "body": [
+            "struct ${0:Name};"
+        ],
+        "description": "unit struct"
+    },
+    "struct": {
+        "prefix": "st",
+        "body": [
+            "struct ${1:Name} {",
+            "    ${2:field}: ${0:Type}",
+            "}"
+        ],
+        "description": "struct"
+    },
+    "test": {
+        "prefix": "test",
+        "body": [
+            "#[test]",
+            "fn ${1:name}() {",
+            "    $0",
+            "}"
+        ],
+        "description": "test item"
+    },
+    "trait": {
+        "prefix": "trait",
+        "body": [
+            "trait ${1:Name} {",
+            "    $0",
+            "}"
+        ],
+        "description": "trait"
+    },
+    "type": {
+        "prefix": "type",
+        "body": [
+            "type ${1:Alias} = ${0:Type};"
+        ],
+        "description": "type alias"
+    },
+    "while-let": {
+        "prefix": "whlet",
+        "body": [
+            "while let ${1:Some(pat)} = ${2:expr} {",
+            "    $0",
+            "}"
+        ],
+        "description": "while let"
+    },
+    "while": {
+        "prefix": "while",
+        "body": [
+            "while ${1:condition} {",
+            "    $0",
+            "}"
+        ],
+        "description": "while"
+    }
+}
