@@ -32,11 +32,6 @@ function config.vim_vsnip()
     vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets'
 end
 
--- emmet
-function config.emmet()
-    vim.g.user_emmet_mode = 'inv'
-end
-
 -- telescope
 function config.telescope()
     require('telescope').setup {

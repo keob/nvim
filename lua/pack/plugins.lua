@@ -34,13 +34,6 @@ return require('packer').startup(function()
     }
 
     use {
-        'mattn/emmet-vim',
-        config = conf.emmet,
-        ft = {'html','css','javascript','javascriptreact','vue','typescript','typescriptreact'},
-        event = 'InsertEnter'
-    }
-
-    use {
         'nvim-telescope/telescope.nvim',
         requires = {
             {'nvim-lua/popup.nvim'},
