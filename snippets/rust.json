@@ -2,21 +2,21 @@
     "allow": {
         "prefix": "allow",
         "body": [
-            "#![allow(${0})]"
+            "#![allow($0)]"
         ],
         "description": "#![allow()]"
     },
     "deny": {
         "prefix": "deny",
         "body": [
-            "#![deny(${0})]"
+            "#![deny($0)]"
         ],
         "description": "#![deny()]"
     },
     "macro_use": {
         "prefix": "mau",
         "body": [
-            "#[macro_use(${0})]"
+            "#[macro_use($0)]"
         ],
         "description": "#[macro_use()]"
     },
@@ -30,70 +30,70 @@
     "cfg": {
         "prefix": "cfg",
         "body": [
-            "#[cfg(${0})]"
+            "#[cfg($0)]"
         ],
         "description": "#[cfg()]"
     },
     "cfg_attr": {
         "prefix": "cfga",
         "body": [
-            "#[cfg_attr(${1}, ${0})]"
+            "#[cfg_attr($1, $0)]"
         ],
         "description": "#[cfg_attr()]"
     },
     "cfg!": {
         "prefix": "mcfg",
         "body": [
-            "cfg!(${0})"
+            "cfg!($0)"
         ],
         "description": "cfg macro"
     },
     "format": {
         "prefix": "format",
         "body": [
-            "format!(\"${0}\")"
+            "format!(\"$0\")"
         ],
         "description": "format macro"
     },
     "panic": {
         "prefix": "panic",
         "body": [
-            "panic!(\"${0}\");"
+            "panic!(\"$0\");"
         ],
         "description": "panic macro"
     },
     "print": {
         "prefix": "pt",
         "body": [
-            "print!(\"${0}\")"
+            "print!(\"$0\")"
         ],
         "description": "print macro"
     },
     "print format": {
         "prefix": "pf",
         "body": [
-            "print!(\"{$1}\", $0)"
+            "print!(\"$1\", $0)"
         ],
         "description": "print format macro"
     },
     "println": {
         "prefix": "pln",
         "body": [
-            "println!(\"${0}\")"
+            "println!(\"$0\")"
         ],
         "description": "println macro"
     },
     "println format": {
         "prefix": "plf",
         "body": [
-            "println!(\"{$1}\", $0)"
+            "println!(\"$1\", $0)"
         ],
         "description": "println format macro"
     },
     "stringify": {
         "prefix": "strify",
         "body": [
-            "stringify!(${0})"
+            "stringify!($0)"
         ],
         "description": "stringify macro"
     },
@@ -107,21 +107,21 @@
     "write": {
         "prefix": "write",
         "body": [
-            "write!(${1}, \"${0}\")"
+            "write!($1, \"$0\")"
         ],
         "description": "write macro"
     },
     "writeln": {
         "prefix": "writeln",
         "body": [
-            "writeln!(${1}, \"${0}\")"
+            "writeln!($1, \"$0\")"
         ],
         "description": "writeln macro"
     },
     "Err": {
         "prefix": "Err",
         "body": [
-            "Err(${0})"
+            "Err($0)"
         ],
         "description": "Err"
     },
@@ -135,7 +135,7 @@
     "Some": {
         "prefix": "Some",
         "body": [
-            "Some(${0})"
+            "Some($0)"
         ],
         "description": "Some"
     },
@@ -159,7 +159,7 @@
     "derive": {
         "prefix": "derive",
         "body": [
-            "#[derive(${0})]"
+            "#[derive($0)]"
         ],
         "description": "#[derive()]"
     },

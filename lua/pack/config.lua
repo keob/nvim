@@ -2,17 +2,17 @@ local config = {}
 
 -- nvim_lsp
 function config.nvim_lsp()
-    require('pack.lsp')
+    require("pack.lsp")
 end
 
 -- nvim_compe
 function config.nvim_compe()
-    require'compe'.setup {
+    require"compe".setup {
         enabled = true;
         autocomplete = true;
         debug = false;
         min_length = 1;
-        preselect = 'always';
+        preselect = "always";
         documentation = true;
         source = {
             nvim_lsp = { priority = 1000; };
@@ -29,19 +29,19 @@ end
 
 -- vsnip
 function config.vim_vsnip()
-    vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets'
+    vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
 end
 
 -- telescope
 function config.telescope()
-    require('telescope').setup {
+    require("telescope").setup {
         defaults = {
-            prompt_position = "top",
             prompt_prefix = "» ",
             selection_caret = "› ",
-            sorting_strategy = 'ascending',
+            winblend = 0,
+            sorting_strategy = "ascending",
             layout_strategy = "horizontal",
-            file_ignore_patterns = {'node_modules/*', 'target/*'}
+            file_ignore_patterns = {"node_modules/*", "target/*"}
         },
     }
 end
