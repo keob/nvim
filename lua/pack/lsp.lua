@@ -115,7 +115,7 @@ lspconfig.clangd.setup({
     on_attach = enhance_attach,
     init_options = {
         clangdFileStatus = true
-    },
+    }
 })
 
 lspconfig.pyright.setup({
@@ -133,12 +133,12 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.tsserver.setup({
-    cmd = { "typescript-language-server", "--stdio" }
+    cmd = { "typescript-language-server", "--stdio" },
     filetypes = {
         "javascript",
         "typescript",
         "javascriptreact",
-        "typescriptreact"
+        "typescriptreact",
     },
     on_attach = enhance_attach,
 })

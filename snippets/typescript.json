@@ -1,65 +1,47 @@
 {
     "Console Log": {
         "prefix": "cl",
-        "body": [
-            "console.log($0);"
-        ],
+        "body": "console.log($0);",
         "description": "console.log()"
     },
     "Destructure": {
         "prefix": "d",
-        "body": [
-            "const { $1 } = $0"
-        ],
+        "body": "const { $1 } = $0",
         "description": "destructure"
     },
     "Try/Catch": {
         "prefix": "try",
-        "body": [
-            "try {\n\t$1\n} catch (err) {\n\t$0\n}"
-        ],
+        "body": "try {\n\t$1\n} catch (err) {\n\t$0\n}",
         "description": "try catch"
     },
     "To-Do": {
         "prefix": "todo",
-        "body": [
-            "// TODO: $0"
-        ],
+        "body": "// TODO: $0",
         "description": "todo"
     },
     "Function": {
         "prefix": "f",
-        "body": [
-            "function $1($2) {\n\t$0\n}"
-        ],
+        "body": "function $1($2) {\n\t$0\n}",
         "description": "function"
     },
     "Import": {
         "prefix": "i",
-        "body": [
-            "import $1 from '${2:$1}'"
-        ],
+        "body": "import $1 from '${2:$1}'",
         "description": "import"
     },
     "Import Component": {
         "prefix": "ic",
-        "body": [
-            "import $1 from './$1'"
-        ],
+        "body": "import $1 from './$1'",
         "description": "import component"
     },
     "Export Default": {
         "prefix": "ed",
-        "body": [
-            "export default $0"
-        ],
+        "body": "export default $0",
         "description": "export default"
     },
     "Export Default Function": {
         "prefix": "edf",
-        "body": [
-            "export default function $1($3) {\n\t$0\n}"
-        ],
+        "body": "export default function $1($3) {\n\t$0\n}",
         "description": "export default function"
     }
 }
