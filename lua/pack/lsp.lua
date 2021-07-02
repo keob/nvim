@@ -104,7 +104,13 @@ lspconfig.rust_analyzer.setup({
 })
 
 lspconfig.clangd.setup({
-    cmd = { "clangd", "--background-index" },
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--cross-file-rename",
+        "--header-insertion=iwyu"
+    },
     filetypes = {"c", "cpp", "objc", "objcpp"},
     on_attach = enhance_attach,
     init_options = {

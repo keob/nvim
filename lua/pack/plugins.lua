@@ -43,9 +43,4 @@ return require('packer').startup(function()
         config = conf.telescope,
         cmd = 'Telescope'
     }
-
-    use {
-        'editorconfig/editorconfig-vim',
-        cmd = 'EditorConfigReload'
-    }
 end)
