@@ -44,7 +44,7 @@ local function load_options()
         smartcase = true;
         incsearch = true;
         wrapscan = true;
-        grepprg = 'rg --hidden --vimgrep --smart-case --';
+        grepprg = "rg --hidden --vimgrep --smart-case --";
         grepformat = "%f:%l:%c:%m";
         startofline = false;
         whichwrap = "h,l,<,>,[,],~";

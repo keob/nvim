@@ -15,7 +15,7 @@ function config.nvim_compe()
         preselect = "always";
         documentation = true;
         source = {
-            nvim_lsp = { priority = 1000; };
+            nvim_lsp = { priority = 2000; };
             nvim_lua = { priority = 1000; };
             vsnip = { priority = 1000; };
             buffer = { priority = 500; };
@@ -36,12 +36,27 @@ end
 function config.telescope()
     require("telescope").setup {
         defaults = {
+            history = false,
             prompt_prefix = "» ",
             selection_caret = "› ",
             winblend = 0,
+            selection_strategy = "reset",
             sorting_strategy = "ascending",
+            scroll_strategy = "cycle",
             layout_strategy = "horizontal",
-            file_ignore_patterns = {"node_modules/*", "target/*"}
+            file_ignore_patterns = {".git/", "node_modules/", "target/"},
+            layout_config = {
+                prompt_position = "top",
+                horizontal = {
+                    preview_width = function(_, cols, _)
+                        if cols > 200 then
+                            return math.floor(cols * 0.4)
+                        else
+                            return math.floor(cols * 0.6)
+                        end
+                    end,
+                },
+            }
         },
     }
 end

@@ -39,7 +39,7 @@ local plug_map = {
     ["n|<leader>fg"] = map_cr('Telescope live_grep'):with_silent():with_noremap(),
     ["n|<Leader>fc"] = map_cu('Telescope git_commits'):with_noremap():with_silent(),
     ["n|<Leader>fl"] = map_cu('Telescope loclist'):with_noremap():with_silent(),
-    ["n|<leader>fs"] = map_cr('Telescope find_files'):with_silent():with_noremap(),
+    ["n|<leader>fs"] = map_cr('Telescope find_files hidden=true'):with_silent():with_noremap(),
     ["n|<leader>fb"] = map_cr('Telescope file_browser'):with_silent():with_noremap(),
 
     -- Packer
