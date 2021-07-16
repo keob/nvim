@@ -121,7 +121,7 @@
     },
     "if err": {
         "prefix": "err",
-        "body": "if err != nil {\n\t$1\n}\n$0",
+        "body": "if err != nil {\n\t$0\n}",
         "description": "if err != nil"
     },
     "fmt.Printf": {
