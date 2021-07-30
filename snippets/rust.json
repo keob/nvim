@@ -1,13 +1,13 @@
 {
     "allow": {
         "prefix": "allow",
-        "body": "#![allow($0)]",
-        "description": "#![allow()]"
+        "body": "#[allow($0)]",
+        "description": "#[allow()]"
     },
     "deny": {
         "prefix": "deny",
-        "body": "#![deny($0)]",
-        "description": "#![deny()]"
+        "body": "#[deny($0)]",
+        "description": "#[deny()]"
     },
     "macro_use": {
         "prefix": "mau",

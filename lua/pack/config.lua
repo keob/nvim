@@ -1,11 +1,9 @@
 local config = {}
 
--- nvim_lsp
 function config.nvim_lsp()
     require("pack.lsp")
 end
 
--- nvim_compe
 function config.nvim_compe()
     require"compe".setup {
         enabled = true;
@@ -27,12 +25,10 @@ function config.nvim_compe()
     }
 end
 
--- vsnip
 function config.vim_vsnip()
     vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
 end
 
--- telescope
 function config.telescope()
     require("telescope").setup {
         defaults = {
@@ -61,7 +57,6 @@ function config.telescope()
     }
 end
 
--- delimimate
 function config.delimimate()
     vim.g.delimitMate_expand_cr = 0
     vim.g.delimitMate_expand_space = 1

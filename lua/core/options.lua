@@ -10,10 +10,13 @@ local function load_options()
         ar = true;
         aw = true;
         awa = true;
+        exrc = true;
+        secure = true;
+        gdefault = true;
+        mousefocus = true;
         termguicolors = true;
         virtualedit = "block";
         joinspaces = false;
-        modelines = 1;
         icm = "split";
         breakindent = true;
         errorbells = false;
@@ -24,8 +27,9 @@ local function load_options()
         viewoptions = "folds,cursor,curdir,slash,unix";
         sessionoptions = "curdir,help,tabpages,winsize";
         clipboard = "unnamedplus";
+        wildoptions = "pum";
         wildignorecase = true;
-        wildignore = "*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip";
+        wildignore = "*.pyc,*.o,*.obj,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip";
         backup = false;
         writebackup = false;
         directory  = global.cache_dir .. "swap/";
@@ -50,9 +54,12 @@ local function load_options()
         whichwrap = "h,l,<,>,[,],~";
         splitbelow = true;
         splitright = true;
-        switchbuf = "useopen";
+        eadirection = "hor";
+        foldtext = 'v:lua.as.folds()';
+        foldopen = vim.opt.foldopen + 'search';
+        switchbuf = "useopen,uselast";
         backspace = "indent,eol,start";
-        diffopt = "filler,iwhite,internal,algorithm:patience";
+        diffopt = "filler,iwhite,hiddenoff,internal,context:4,algorithm:patience";
         completeopt = "menuone,noselect";
         inccommand = "split";
         jumpoptions = "stack";
@@ -60,12 +67,30 @@ local function load_options()
         showmatch = true;
         showcmd = false;
         shiftround = true;
-        shortmess = "aoOTWIcF";
+        shortmess = {
+            a = true,
+            t = true,
+            A = true,
+            o = true,
+            O = true,
+            T = true,
+            f = true,
+            F = true,
+            s = true,
+            I = true,
+            c = true,
+            F = true,
+            W = true,
+        };
         scrolloff = 2;
         sidescrolloff = 5;
-        foldlevelstart = 99;
+        foldlevelstart = 6;
         ruler = false;
-        listchars = "tab:› ,trail:•";
+        listchars = {
+            eol = nil,
+            tab = nil,
+            trail = '•',
+        };
         showtabline = 1;
         winwidth = 30;
         winminwidth = 10;
@@ -78,13 +103,12 @@ local function load_options()
         cmdwinheight = 5;
         equalalways = false;
         laststatus = 2;
-        display = "lastline";
         statusline = " %t%r%m %= %y [ %l • %v ] [ %p%% ] ";
     }
 
     local window_local = {
         list = true;
-        scl = "yes";
+        scl = "yes:1";
         nu = true;
         rnu = true;
         linebreak = true;
@@ -94,8 +118,17 @@ local function load_options()
         foldenable = true;
         foldmethod = "indent";
         cursorline = false;
-        fillchars = "eob:~";
-        breakindentopt = "shift:2,min:20";
+        breakindentopt = "sbr";
+        fillchars = {
+            vert = '▕',
+            fold = ' ',
+            eob = ' ',
+            diff = '╱',
+            msgsep = '‾',
+            foldopen = '▾',
+            foldsep = '│',
+            foldclose = '▸',
+        }
     }
 
     local buffer_local = {
@@ -112,6 +145,18 @@ local function load_options()
         shiftwidth = 4;
         softtabstop = 4;
         smartindent = true;
+        formatoptions = {
+            ['1'] = true,
+            ['2'] = true,
+            q = true,
+            c = true,
+            r = true,
+            n = true,
+            t = false,
+            j = true,
+            l = true,
+            v = true,
+        }
     }
 
     vim.g.loaded_python_provider = 0
