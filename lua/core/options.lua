@@ -46,16 +46,16 @@ local function load_options()
         lazyredraw = true;
         ignorecase = true;
         smartcase = true;
+        hlsearch = false;
         incsearch = true;
         wrapscan = true;
         grepprg = "rg --hidden --vimgrep --smart-case --";
         grepformat = "%f:%l:%c:%m";
         startofline = false;
-        whichwrap = "h,l,<,>,[,],~";
+        -- whichwrap = "h,l,<,>,[,],~";
         splitbelow = true;
         splitright = true;
         eadirection = "hor";
-        foldtext = 'v:lua.as.folds()';
         foldopen = vim.opt.foldopen + 'search';
         switchbuf = "useopen,uselast";
         backspace = "indent,eol,start";
@@ -88,7 +88,9 @@ local function load_options()
         ruler = false;
         listchars = {
             eol = nil,
-            tab = nil,
+            tab = '› ',
+            extends = '»',
+            precedes = '«',
             trail = '•',
         };
         showtabline = 1;
@@ -135,6 +137,7 @@ local function load_options()
         swf = false;
         udf = true;
         fo = "1jcroql";
+        wrapmargin = 2;
         infercase = true;
         complete = ".,w,b,u,t";
         synmaxcol = 2500;
