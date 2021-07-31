@@ -122,14 +122,14 @@ local function load_options()
         cursorline = false;
         breakindentopt = "sbr";
         fillchars = {
-            vert = '▕',
+            vert = '|',
             fold = ' ',
-            eob = ' ',
-            diff = '╱',
+            eob = '·',
+            diff = '-',
             msgsep = '‾',
-            foldopen = '▾',
-            foldsep = '│',
-            foldclose = '▸',
+            foldsep = '|',
+            foldopen = '-',
+            foldclose = '+',
         }
     }
 
