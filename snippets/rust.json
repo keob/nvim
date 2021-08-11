@@ -41,7 +41,7 @@
     },
     "panic": {
         "prefix": "panic",
-        "body": "panic!(\"$0\");",
+        "body": "panic!(\"$0\")",
         "description": "panic macro"
     },
     "print": {
