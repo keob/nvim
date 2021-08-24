@@ -13,10 +13,12 @@ function _G.reload_lsp()
     vim.cmd("edit")
 end
 
-vim.fn.sign_define("LspDiagnosticsSignError", {text = "➤", texthl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "»", texthl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "≡", texthl = "LspDiagnosticsSignInformation"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = "•", texthl = "LspDiagnosticsSignHint"})
+local signs = { Error = "»", Warning = "›", Hint = "•", Information = "≡" }
+
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -70,17 +72,6 @@ require('vim.lsp.protocol').CompletionItemKind = {
 }
 
 local enhance_attach = function(client, bufnr)
-    -- local ns = { noremap = true, silent = true }
-    --
-    -- local function buf_set_keymap(...) api.nvim_buf_set_keymap(bufnr, ...) end
-    -- local function buf_set_option(...) api.nvim_buf_set_option(bufnr, ...) end
-    --
-    -- if client.resolved_capabilities.document_formatting then
-    --     buf_set_keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", ns)
-    -- elseif client.resolved_capabilities.document_range_formatting then
-    --     buf_set_keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", ns)
-    -- end
-
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
