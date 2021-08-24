@@ -1,7 +1,7 @@
 local opt = vim.opt
 local global = require('core.global')
 
-vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[colorscheme dracula]]
 
 local function load_options()
     local global_local = {
@@ -84,7 +84,7 @@ local function load_options()
         };
         scrolloff = 2;
         sidescrolloff = 5;
-        foldlevelstart = 6;
+        foldlevelstart = 10;
         ruler = false;
         listchars = {
             eol = nil,
