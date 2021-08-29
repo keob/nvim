@@ -126,7 +126,7 @@ local function load_options()
             fold = ' ',
             eob = ' ',
             diff = '-',
-            msgsep = '‾',
+            msgsep = ' ',
             foldsep = '|',
             foldopen = '-',
             foldclose = '+',
