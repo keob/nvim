@@ -2,12 +2,6 @@
 syn keyword     goTodo              contained NOTE
 hi def link     goTodo              Todo
 
-" Variable
-syn match goVarAssign               /\v[_.[:alnum:]]+(,\s*[_.[:alnum:]]+)*\ze(\s*([-^+|^\/%&]|\*|\<\<|\>\>|\&\^)?\=[^=])/
-syn match goVarDefs                 /\v\w+(,\s*\w+)*\ze(\s*:\=)/
-hi def link   goVarAssign           Special
-hi def link   goVarDefs             Special
-
 " Fields
 syn match       goField             /\.\w\+\
                                     \%(\%([\/\-\+*%]\)\|\
