@@ -40,7 +40,7 @@ function config.telescope()
             sorting_strategy = "ascending",
             scroll_strategy = "cycle",
             layout_strategy = "horizontal",
-            file_ignore_patterns = {".git/", "node_modules/", "target/"},
+            file_ignore_patterns = {".git/", ".cache/", "node_modules/", "target/", "build/"},
             layout_config = {
                 prompt_position = "top",
                 horizontal = {
