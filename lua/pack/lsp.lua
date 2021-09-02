@@ -125,9 +125,14 @@ lspconfig.rust_analyzer.setup({
 lspconfig.clangd.setup({
     cmd = {
         "clangd",
+        "-j=6",
+        "--compile-commands-dir=build",
+        "--all-scopes-completion",
+        "--enable-config",
         "--background-index",
         "--clang-tidy",
         "--cross-file-rename",
+        "--completion-style=detailed",
         "--header-insertion=iwyu"
     },
     filetypes = {"c", "cpp", "objc", "objcpp"},
