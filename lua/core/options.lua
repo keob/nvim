@@ -122,7 +122,7 @@ local function load_options()
         cursorline = false;
         breakindentopt = "sbr";
         fillchars = {
-            vert = ' ',
+            vert = '│',
             fold = ' ',
             eob = ' ',
             diff = '-',
