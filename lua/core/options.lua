@@ -60,7 +60,7 @@ local function load_options()
         switchbuf = "useopen,uselast";
         backspace = "indent,eol,start";
         diffopt = "filler,iwhite,hiddenoff,internal,context:4,algorithm:patience";
-        completeopt = "menuone,noselect";
+        completeopt = "menu,menuone,noselect";
         inccommand = "split";
         jumpoptions = "stack";
         showmode = false;
@@ -105,7 +105,7 @@ local function load_options()
         cmdwinheight = 5;
         equalalways = false;
         laststatus = 2;
-        statusline = " %t%r%m %= %y [ %l • %v ] [ %p%% ] ";
+        statusline = " %t%r%m %= %y[ %l • %v ][ %p%% ] ";
     }
 
     local window_local = {
@@ -122,7 +122,7 @@ local function load_options()
         cursorline = false;
         breakindentopt = "sbr";
         fillchars = {
-            vert = '│',
+            vert = ' ',
             fold = ' ',
             eob = ' ',
             diff = '-',

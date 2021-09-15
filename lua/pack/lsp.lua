@@ -66,13 +66,20 @@ require('vim.lsp.protocol').CompletionItemKind = {
     '  Enum',          -- Enum
     '  Constant',      -- Constant
     '  Struct',        -- Struct
-    '鬒 Event',         -- Event
-    'Ψ Operator',       -- Operator
+    ' Event',          -- Event
+    'ﬦ Operator',       -- Operator
     ' Type Parameter', -- TypeParameter
 }
 
 local enhance_attach = function(client, bufnr)
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    if client.resolved_capabilities.document_formatting then
+        vim.api.nvim_command [[augroup Format]]
+        vim.api.nvim_command [[autocmd! * <buffer>]]
+        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+        vim.api.nvim_command [[augroup END]]
+    end
 end
 
 lspconfig.gopls.setup({
@@ -161,6 +168,8 @@ lspconfig.tsserver.setup({
     filetypes = {
         "javascript",
         "typescript",
+        "javascript.jsx",
+        "typescript.tsx",
         "javascriptreact",
         "typescriptreact",
     },

@@ -17,13 +17,11 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         config = conf.nvim_lsp,
-        event = 'BufReadPre'
     }
 
     use {
         'hrsh7th/nvim-compe',
         config = conf.nvim_compe,
-        event = 'InsertEnter'
     }
 
     use {

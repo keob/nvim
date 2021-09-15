@@ -132,7 +132,7 @@ if !exists('g:dracula_italic')
 endif
 
 if !exists('g:dracula_underline')
-  let g:dracula_underline = 1
+  let g:dracula_underline = 0
 endif
 
 if !exists('g:dracula_undercurl')

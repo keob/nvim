@@ -30,8 +30,14 @@ function config.vim_vsnip()
 end
 
 function config.telescope()
+    local actions = require("telescope.actions")
     require("telescope").setup {
         defaults = {
+            mappings = {
+                n = {
+                    ["q"] = actions.close
+                }
+            },
             history = false,
             prompt_prefix = "» ",
             selection_caret = "› ",
@@ -40,7 +46,7 @@ function config.telescope()
             sorting_strategy = "ascending",
             scroll_strategy = "cycle",
             layout_strategy = "horizontal",
-            file_ignore_patterns = {".git/", ".cache/", "node_modules/", "target/", "build/"},
+            file_ignore_patterns = {".git/", ".cache/", ".venv/", "node_modules/", "target/", "build/"},
             layout_config = {
                 prompt_position = "top",
                 horizontal = {
