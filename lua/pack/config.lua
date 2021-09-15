@@ -35,7 +35,7 @@ function config.telescope()
         defaults = {
             mappings = {
                 n = {
-                    ["q"] = actions.close
+                    ["<Esc>"] = actions.close
                 }
             },
             history = false,
