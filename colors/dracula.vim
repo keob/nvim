@@ -128,7 +128,7 @@ if !exists('g:dracula_bold')
 endif
 
 if !exists('g:dracula_italic')
-  let g:dracula_italic = 1
+  let g:dracula_italic = 0
 endif
 
 if !exists('g:dracula_underline')
@@ -370,4 +370,5 @@ hi! link helpBacktick Special
 
 "}}}
 
-" vim: fdm=marker ts=2 sts=2 sw=2 fdl=0 et:
+
+" vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
