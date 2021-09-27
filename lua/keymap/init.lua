@@ -38,7 +38,8 @@ local plug_map = {
     -- Telescope
     ["n|<leader>bb"] = map_cr('Telescope buffers'):with_silent():with_noremap(),
     ["n|<leader>fh"] = map_cr('Telescope help_tags'):with_silent():with_noremap(),
-    ["n|<leader>fg"] = map_cr('Telescope live_grep'):with_silent():with_noremap(),
+    ["n|<leader>fl"] = map_cr('Telescope live_grep'):with_silent():with_noremap(),
+    ["n|<leader>fg"] = map_cr('Telescope grep_string'):with_silent():with_noremap(),
     ["n|<leader>fc"] = map_cu('Telescope git_commits'):with_noremap():with_silent(),
     ["n|<leader>fb"] = map_cr('Telescope file_browser'):with_silent():with_noremap(),
     ["n|<leader>fs"] = map_cr('Telescope find_files hidden=true'):with_silent():with_noremap(),
@@ -67,23 +68,17 @@ local nvim_map = {
     ["n|<leader>tm"] = map_cr('tabm'):with_silent():with_noremap(),
 
     -- Buffer
-    ["n|;n"] = map_cr('bnext'):with_silent():with_noremap(),
-    ["n|;m"] = map_cr('bp'):with_silent():with_noremap(),
-    ["n|;c"] = map_cr('bd'):with_silent():with_noremap(),
+    ["n|<leader>bn"] = map_cr('bnext'):with_silent():with_noremap(),
+    ["n|<leader>bm"] = map_cr('bp'):with_silent():with_noremap(),
+    ["n|<leader>bd"] = map_cr('bd'):with_silent():with_noremap(),
 
     -- Increment/Decrement
     ["n|+"] = map_cmd('<C-a>'):with_silent():with_noremap(),
     ["n|-"] = map_cmd('<C-x>'):with_silent():with_noremap(),
 
     -- Split window
-    ["n|;s"] = map_cr('split'):with_silent():with_noremap(),
-    ["n|;v"] = map_cr('vsplit'):with_silent():with_noremap(),
-
-    -- Resize window
-    ["n|;j"] = map_cmd('<C-W>-'):with_silent():with_noremap(),
-    ["n|;k"] = map_cmd('<C-W>+'):with_silent():with_noremap(),
-    ["n|;h"] = map_cmd('<C-W><'):with_silent():with_noremap(),
-    ["n|;l"] = map_cmd('<C-W>>'):with_silent():with_noremap(),
+    ["n|<leader>ss"] = map_cr('split'):with_silent():with_noremap(),
+    ["n|<leader>sv"] = map_cr('vsplit'):with_silent():with_noremap(),
 
     -- Move window
     ["n|<C-j>"] = map_cmd('<C-W>j'):with_silent():with_noremap(),
