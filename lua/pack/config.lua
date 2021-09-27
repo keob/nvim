@@ -33,6 +33,16 @@ function config.telescope()
     local actions = require("telescope.actions")
     require("telescope").setup {
         defaults = {
+            vimgrep_arguments = {
+                "rg",
+                "--crlf",
+                "--follow",
+                "--hidden",
+                "--smart-case",
+                "--column",
+                "--no-heading",
+                "--with-filename"
+            },
             mappings = {
                 n = {
                     ["<Esc>"] = actions.close
