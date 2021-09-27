@@ -37,7 +37,6 @@ local function load_options()
         backupdir = global.cache_dir .. "backup/";
         viewdir = global.cache_dir .. "view/";
         history = 2000;
-        shada = "!,'1000,<50,s10,h";
         timeout = true;
         ttimeout = true;
         timeoutlen = 500;
@@ -49,17 +48,17 @@ local function load_options()
         hlsearch = false;
         incsearch = true;
         wrapscan = true;
-        grepprg = "rg --hidden --vimgrep --smart-case --";
+        grepprg = "rg --hidden --crlf --follow --vimgrep --smart-case --";
         grepformat = "%f:%l:%c:%m";
         startofline = false;
-        -- whichwrap = "h,l,<,>,[,],~";
+        whichwrap = "h,l,<,>,[,],~";
         splitbelow = true;
         splitright = true;
         eadirection = "hor";
         foldopen = vim.opt.foldopen + 'search';
-        switchbuf = "useopen,uselast";
+        -- switchbuf = "useopen";
         backspace = "indent,eol,start";
-        diffopt = "filler,iwhite,hiddenoff,internal,context:4,algorithm:patience";
+        diffopt = "filler,iwhite,internal,algorithm:patience";
         completeopt = "menu,menuone,noselect";
         inccommand = "split";
         jumpoptions = "stack";
@@ -69,29 +68,27 @@ local function load_options()
         shiftround = true;
         shortmess = {
             a = true,
-            t = true,
-            A = true,
             o = true,
             O = true,
-            T = true,
-            f = true,
-            F = true,
             s = true,
+            t = true,
+            T = true,
+            W = true,
+            A = true,
             I = true,
             c = true,
             F = true,
-            W = true,
         };
-        scrolloff = 2;
+        scrolloff = 1;
         sidescrolloff = 5;
         foldlevelstart = 10;
         ruler = false;
         listchars = {
             eol = nil,
-            tab = '› ',
-            extends = '»',
-            precedes = '«',
+            tab = '··›',
             trail = '•',
+            extends = '»',
+            precedes = '«'
         };
         showtabline = 1;
         winwidth = 30;
@@ -105,7 +102,7 @@ local function load_options()
         cmdwinheight = 5;
         equalalways = false;
         laststatus = 2;
-        statusline = " %t%r%m %= %y[ %l • %v ][ %p%% ] ";
+        statusline = " %t%r%m %= %y [ %l • %v ] [ %p%% ] ";
     }
 
     local window_local = {
@@ -136,10 +133,10 @@ local function load_options()
     local buffer_local = {
         swf = false;
         udf = true;
-        fo = "1jcroql";
+        fo = "croql1j";
         wrapmargin = 2;
         infercase = true;
-        complete = ".,w,b,u,t";
+        complete = ".,w,b,u,],t";
         synmaxcol = 2500;
         textwidth = 100;
         expandtab = true;
@@ -148,18 +145,6 @@ local function load_options()
         shiftwidth = 4;
         softtabstop = 4;
         smartindent = true;
-        formatoptions = {
-            ['1'] = true,
-            ['2'] = true,
-            q = true,
-            c = true,
-            r = true,
-            n = true,
-            t = false,
-            j = true,
-            l = true,
-            v = true,
-        }
     }
 
     vim.g.loaded_python_provider = 0
