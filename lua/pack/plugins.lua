@@ -17,11 +17,13 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         config = conf.nvim_lsp,
+        event = 'BufReadPre',
     }
 
     use {
         'hrsh7th/nvim-compe',
         config = conf.nvim_compe,
+        event = 'InsertEnter',
     }
 
     use {
@@ -32,6 +34,13 @@ return require('packer').startup(function()
     }
 
     use {
+        'nvim-treesitter/nvim-treesitter',
+        after = 'telescope.nvim',
+        config = conf.treesitter,
+        event = "BufRead",
+    }
+
+    use {
         'nvim-telescope/telescope.nvim',
         requires = {
             {'nvim-lua/popup.nvim'},
@@ -39,6 +48,6 @@ return require('packer').startup(function()
             {'kyazdani42/nvim-web-devicons'}
         },
         config = conf.telescope,
-        cmd = 'Telescope'
+        cmd = 'Telescope',
     }
 end)

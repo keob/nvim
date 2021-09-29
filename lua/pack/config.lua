@@ -4,6 +4,15 @@ function config.nvim_lsp()
     require("pack.lsp")
 end
 
+function config.treesitter()
+    require'nvim-treesitter.configs'.setup {
+        ensure_installed = "all",
+        highlight = {
+            enable = true,
+        },
+    }
+end
+
 function config.nvim_compe()
     require"compe".setup {
         enabled = true;
