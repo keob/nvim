@@ -54,6 +54,8 @@ local nvim_map = {
     ["n|<leader><leader>q"] = map_cr('q!'):with_silent():with_noremap(),
     ["n|<leader>w"]         = map_cr('w'):with_silent():with_noremap(),
 
+    ["n|<leader><CR>"]      = map_cr('nohl'):with_silent():with_noremap(),
+
     -- Select
     ["n|<leader>sa"]        = map_cmd('ggVG'):with_silent():with_noremap(),
     ["n|<leader>se"]        = map_cmd('VG'):with_silent():with_noremap(),
