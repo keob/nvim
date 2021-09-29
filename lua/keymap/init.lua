@@ -52,6 +52,7 @@ local plug_map = {
 
 local nvim_map = {
     ["n|<leader><leader>q"] = map_cr('q!'):with_silent():with_noremap(),
+    ["n|<leader><leader>a"] = map_cr('wqa'):with_silent():with_noremap(),
     ["n|<leader>w"]         = map_cr('w'):with_silent():with_noremap(),
 
     ["n|<leader><CR>"]      = map_cr('nohl'):with_silent():with_noremap(),
@@ -67,7 +68,6 @@ local nvim_map = {
     ["n|<leader>tl"] = map_cr('tablast'):with_silent():with_noremap(),
     ["n|<leader>tn"] = map_cr('tabnext'):with_silent():with_noremap(),
     ["n|<leader>tp"] = map_cr('tabprev'):with_silent():with_noremap(),
-    ["n|<leader>tm"] = map_cr('tabm'):with_silent():with_noremap(),
 
     -- Buffer
     ["n|<leader>bn"] = map_cr('bnext'):with_silent():with_noremap(),
