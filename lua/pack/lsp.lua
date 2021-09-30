@@ -144,6 +144,7 @@ lspconfig.clangd.setup({
     },
     filetypes = {"c", "cpp", "objc", "objcpp"},
     on_attach = enhance_attach,
+    root_dir = vim.loop.cwd,
     init_options = {
         clangdFileStatus = true
     }
@@ -153,6 +154,7 @@ lspconfig.pyright.setup({
     cmd = { "pyright-langserver", "--stdio" },
     filetypes = {"python"},
     on_attach = enhance_attach,
+    root_dir = vim.loop.cwd,
     settings = {
         python = {
             analysis = {
@@ -174,4 +176,5 @@ lspconfig.tsserver.setup({
         "typescriptreact",
     },
     on_attach = enhance_attach,
+    root_dir = vim.loop.cwd,
 })
