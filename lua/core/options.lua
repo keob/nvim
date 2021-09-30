@@ -16,7 +16,6 @@ local function load_options()
         gdefault = true;
         mousefocus = true;
         termguicolors = true;
-        virtualedit = "block";
         joinspaces = false;
         errorbells = false;
         visualbell = false;
@@ -51,7 +50,7 @@ local function load_options()
         wrapscan = true;
         grepprg = "rg --hidden --crlf --follow --vimgrep --smart-case --";
         grepformat = "%f:%l:%c:%m";
-        -- whichwrap = "h,l,<,>,[,],~";
+        -- whichwrap = "b,s,h,l,<,>,[,],~";
         splitbelow = true;
         splitright = true;
         eadirection = "hor";
@@ -61,7 +60,7 @@ local function load_options()
         completeopt = "menu,menuone,noselect";
         inccommand = "split";
         jumpoptions = "stack";
-        showmatch = true;
+        showmatch = false;
         showmode = false;
         showcmd = false;
         shiftround = true;
@@ -71,8 +70,6 @@ local function load_options()
             O = true,
             s = true,
             T = true,
-            W = true,
-            A = true,
             I = true,
             c = true,
             F = true,
@@ -84,7 +81,7 @@ local function load_options()
         listchars = {
             eol = nil,
             tab = '··›',
-            lead = '·',
+            -- lead = '·',
             trail = '•',
             extends = '»',
             precedes = '«'
@@ -137,7 +134,6 @@ local function load_options()
         formatoptions = "croql1j";
         infercase = true;
         complete = ".,w,b,u,],t";
-        matchpairs = "(:),{:},[:],<:>";
         synmaxcol = 3000;
         textwidth = 80;
         tabstop = 4;
