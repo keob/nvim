@@ -74,16 +74,6 @@
         "body": "vec![$0]",
         "description": "vec macro"
     },
-    "write": {
-        "prefix": "write",
-        "body": "write!($1, \"$0\")",
-        "description": "write macro"
-    },
-    "writeln": {
-        "prefix": "writeln",
-        "body": "writeln!($1, \"$0\")",
-        "description": "writeln macro"
-    },
     "Err": {
         "prefix": "err",
         "body": "Err($0)",
