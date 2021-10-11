@@ -50,7 +50,7 @@ local function load_options()
         wrapscan = true;
         grepprg = "rg --hidden --crlf --follow --vimgrep --smart-case --";
         grepformat = "%f:%l:%c:%m";
-        -- whichwrap = "b,s,h,l,<,>,[,],~";
+        whichwrap = "b,s,h,l,<,>,[,],~";
         splitbelow = true;
         splitright = true;
         eadirection = "hor";
@@ -58,9 +58,9 @@ local function load_options()
         backspace = "indent,eol,start";
         diffopt = "filler,iwhite,internal,algorithm:patience";
         completeopt = "menu,menuone,noselect";
-        inccommand = "split";
+        inccommand = "nosplit";
         jumpoptions = "stack";
-        showmatch = false;
+        showmatch = true;
         showmode = false;
         showcmd = false;
         shiftround = true;
