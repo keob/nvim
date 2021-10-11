@@ -289,7 +289,7 @@ hi! link TabLine      DraculaBoundary
 hi! link TabLineFill  DraculaBgDark
 hi! link TabLineSel   Normal
 hi! link Title        DraculaGreenBold
-hi! link VertSplit    DraculaBoundary
+hi! link VertSplit    DraculaBgLighter
 hi! link Visual       DraculaSelection
 hi! link VisualNOS    Visual
 hi! link WarningMsg   DraculaOrangeInverse
