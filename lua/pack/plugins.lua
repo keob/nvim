@@ -32,13 +32,6 @@ return require('packer').startup(function()
     }
 
     use {
-        'nvim-treesitter/nvim-treesitter',
-        after = 'telescope.nvim',
-        config = conf.treesitter,
-        event = "BufRead",
-    }
-
-    use {
         'nvim-telescope/telescope.nvim',
         requires = {
             {'nvim-lua/popup.nvim'},

@@ -1,7 +1,7 @@
 local opt = vim.opt
 local global = require('core.global')
 
-vim.cmd[[colorscheme dracula]]
+vim.cmd[[colorscheme gruvbox]]
 
 local function load_options()
     local global_local = {
@@ -80,7 +80,7 @@ local function load_options()
         ruler = false;
         listchars = {
             eol = nil,
-            tab = '··›',
+            tab = '»·',
             -- lead = '·',
             trail = '•',
             extends = '»',
@@ -141,7 +141,7 @@ local function load_options()
         softtabstop = 4;
         expandtab = true;
         autoindent = true;
-        smartindent = true;
+        smartindent = false;
     }
 
     for name, value in pairs(global_local) do
