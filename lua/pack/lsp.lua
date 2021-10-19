@@ -73,13 +73,6 @@ require('vim.lsp.protocol').CompletionItemKind = {
 
 local enhance_attach = function(client, bufnr)
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_command [[augroup Format]]
-        vim.api.nvim_command [[autocmd! * <buffer>]]
-        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-        vim.api.nvim_command [[augroup END]]
-    end
 end
 
 lspconfig.gopls.setup({
@@ -90,9 +83,7 @@ lspconfig.gopls.setup({
         gopls = {
             analyses = {
                 unusedparams = true,
-                nonewvars = true,
-                fillreturns = true,
-                undeclaredname = true,
+                unusedwrite = true,
             },
             staticcheck = true,
             linksInHover = false,
