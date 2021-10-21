@@ -28,7 +28,6 @@ return require('packer').startup(function()
         'hrsh7th/vim-vsnip',
         requires = {'hrsh7th/vim-vsnip-integ'},
         config = conf.vim_vsnip,
-        event = 'InsertCharPre'
     }
 
     use {

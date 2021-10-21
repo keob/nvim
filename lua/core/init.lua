@@ -61,7 +61,7 @@ local load_core =function()
     disable_distribution_plugins()
 
     require('core.options')
-    require('pack.plugins')
+    require('pack')
     require('keymap')
 end
 

@@ -80,7 +80,7 @@ local function load_options()
         ruler = false;
         listchars = {
             eol = nil,
-            tab = '»·',
+            tab = '›·',
             -- lead = '·',
             trail = '•',
             extends = '»',

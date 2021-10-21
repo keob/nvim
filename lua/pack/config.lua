@@ -51,7 +51,6 @@ function config.telescope()
             history = false,
             prompt_prefix = "» ",
             selection_caret = "› ",
-            winblend = 0,
             selection_strategy = "reset",
             sorting_strategy = "ascending",
             scroll_strategy = "cycle",
