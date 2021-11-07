@@ -96,7 +96,7 @@ local function load_options()
         previewheight = 12;
         cmdheight = 1;
         cmdwinheight = 5;
-        equalalways = false;
+        equalalways = true;
         display = "lastline";
         laststatus = 2;
         statusline = " %t%r%m %= %y [ %l • %v ] [ %p%% ] ";
