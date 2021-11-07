@@ -15,7 +15,7 @@ if version > 580
   endif
 endif
 
-let g:colors_name='gruvbox'
+let g:colors_name = 'gruvbox'
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish
@@ -25,40 +25,43 @@ endif
 " Global Settings: {{{
 
 if !exists('g:gruvbox_bold')
-  let g:gruvbox_bold=1
+  let g:gruvbox_bold = 1
 endif
 
 if !exists('g:gruvbox_italic')
-    let g:gruvbox_italic=0
+    let g:gruvbox_italic = 1
 endif
+
 if !exists('g:gruvbox_undercurl')
-  let g:gruvbox_undercurl=1
+  let g:gruvbox_undercurl = 1
 endif
+
 if !exists('g:gruvbox_underline')
-  let g:gruvbox_underline=1
+  let g:gruvbox_underline = 1
 endif
+
 if !exists('g:gruvbox_inverse')
-  let g:gruvbox_inverse=1
+  let g:gruvbox_inverse = 1
 endif
 
 if !exists('g:gruvbox_guisp_fallback') || index(['fg', 'bg'], g:gruvbox_guisp_fallback) == -1
-  let g:gruvbox_guisp_fallback='NONE'
+  let g:gruvbox_guisp_fallback = 'NONE'
 endif
 
 if !exists('g:gruvbox_improved_strings')
-  let g:gruvbox_improved_strings=0
+  let g:gruvbox_improved_strings = 0
 endif
 
 if !exists('g:gruvbox_improved_warnings')
-  let g:gruvbox_improved_warnings=0
+  let g:gruvbox_improved_warnings = 0
 endif
 
 if !exists('g:gruvbox_termcolors')
-  let g:gruvbox_termcolors=256
+  let g:gruvbox_termcolors = 256
 endif
 
 if !exists('g:gruvbox_invert_indent_guides')
-  let g:gruvbox_invert_indent_guides=0
+  let g:gruvbox_invert_indent_guides = 0
 endif
 
 if exists('g:gruvbox_contrast')
@@ -66,17 +69,40 @@ if exists('g:gruvbox_contrast')
 endif
 
 if !exists('g:gruvbox_contrast_dark')
-  let g:gruvbox_contrast_dark='medium'
+  let g:gruvbox_contrast_dark = 'medium'
 endif
 
 if !exists('g:gruvbox_contrast_light')
-  let g:gruvbox_contrast_light='medium'
+  let g:gruvbox_contrast_light = 'medium'
 endif
 
 let s:is_dark=(&background == 'dark')
 
 " }}}
-" Palette Utility Functions: {{{
+
+" Search Highlighting {{{
+
+function! gruvbox#hls_show()
+  set hlsearch
+  call GruvboxHlsShowCursor()
+endfunction
+
+function! gruvbox#hls_hide()
+  set nohlsearch
+  call GruvboxHlsHideCursor()
+endfunction
+
+function! gruvbox#hls_toggle()
+  if &hlsearch
+    call gruvbox#hls_hide()
+  else
+    call gruvbox#hls_show()
+  endif
+endfunction
+
+" }}}
+
+"" Palette Utility Functions: {{{
 
 function! s:Color(name, default, ...)
   " color already set, validate option
@@ -669,7 +695,7 @@ call s:HL('Error', s:gb.red, s:none, s:bold)
 
 " Generic statement
 hi! link Statement GruvboxRed
-" if, then, else, endif, swicth, etc.
+" if, then, else, endif, switch, etc.
 hi! link Conditional GruvboxRed
 " for, do, while, etc.
 hi! link Repeat GruvboxRed
@@ -771,6 +797,29 @@ endif
 " }}}
 " LSP: {{{
 
+hi! link DiagnosticError GruvboxRed
+hi! link DiagnosticSignError GruvboxRedSign
+hi! link DiagnosticUnderlineError GruvboxRedUnderline
+
+hi! link DiagnosticWarn GruvboxYellow
+hi! link DiagnosticSignWarn GruvboxYellowSign
+hi! link DiagnosticUnderlineWarn GruvboxYellowUnderline
+
+hi! link DiagnosticInfo GruvboxBlue
+hi! link DiagnosticSignInfo GruvboxBlueSign
+hi! link DiagnosticUnderlineInfo GruvboxBlueUnderline
+
+hi! link DiagnosticHint GruvboxAqua
+hi! link DiagnosticSignHint GruvboxAquaSign
+hi! link DiagnosticUnderlineHint GruvboxAquaUnderline
+
+hi! link LspReferenceText GruvboxYellowBold
+hi! link LspReferenceRead GruvboxYellowBold
+hi! link LspReferenceWrite GruvboxOrangeBold
+
+hi! link LspCodeLens GruvboxGray
+
+" Backward Compatibilty prior to (https://github.com/neovim/neovim/pull/15585)
 hi! link LspDiagnosticsDefaultError GruvboxRed
 hi! link LspDiagnosticsSignError GruvboxRedSign
 hi! link LspDiagnosticsUnderlineError GruvboxRedUnderline
@@ -786,10 +835,6 @@ hi! link LspDiagnosticsUnderlineInformation GruvboxBlueUnderline
 hi! link LspDiagnosticsDefaultHint GruvboxAqua
 hi! link LspDiagnosticsSignHint GruvboxAquaSign
 hi! link LspDiagnosticsUnderlineHint GruvboxAquaUnderline
-
-hi! link LspReferenceText GruvboxYellowBold
-hi! link LspReferenceRead GruvboxYellowBold
-hi! link LspReferenceWrite GruvboxOrangeBold
 
 " }}}
 
