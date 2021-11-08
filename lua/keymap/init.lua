@@ -1,5 +1,3 @@
-require('keymap.config')
-
 local bind = require('keymap.bind')
 local map_cr = bind.map_cr
 local map_cu = bind.map_cu
@@ -7,14 +5,6 @@ local map_cmd = bind.map_cmd
 local map_args = bind.map_args
 
 local plug_map = {
-    -- Complete
-    ["i|<TAB>"]      = map_cmd('v:lua.tab_complete()'):with_expr():with_silent(),
-    ["i|<S-TAB>"]    = map_cmd('v:lua.s_tab_complete()'):with_expr():with_silent(),
-    ["s|<TAB>"]      = map_cmd('v:lua.tab_complete()'):with_expr():with_silent(),
-    ["s|<S-TAB>"]    = map_cmd('v:lua.s_tab_complete()'):with_expr():with_silent(),
-    ["i|<C-e>"]      = map_cmd([[compe#close('<C-e>')]]):with_expr():with_silent(),
-    ["i|<CR>"]       = map_cmd([[compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })]]):with_noremap():with_expr():with_nowait(),
-
     -- LSP
     ["n|<leader>q"]   = map_cr('lua vim.lsp.diagnostic.set_loclist()'):with_noremap():with_silent(),
     ["n|<leader>e"]   = map_cr('lua vim.lsp.diagnostic.show_line_diagnostics()'):with_noremap():with_silent(),

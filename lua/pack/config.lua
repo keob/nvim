@@ -4,27 +4,6 @@ function config.nvim_lsp()
     require("pack.lsp")
 end
 
-function config.nvim_compe()
-    require"compe".setup {
-        enabled = true;
-        autocomplete = true;
-        debug = false;
-        min_length = 1;
-        preselect = "always";
-        documentation = true;
-        source = {
-            nvim_lsp = { priority = 2000; };
-            nvim_lua = { priority = 1000; };
-            vsnip = { priority = 1000; };
-            buffer = { priority = 500; };
-            calc = { priority = 500; };
-            sort = { priority = 500; };
-            tags = { priority = 500; };
-            path = { priority = 500; };
-        };
-    }
-end
-
 function config.vim_vsnip()
     vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
 end

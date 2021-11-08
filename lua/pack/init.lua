@@ -20,13 +20,18 @@ return require('packer').startup(function()
     }
 
     use {
-        'hrsh7th/nvim-compe',
-        config = conf.nvim_compe,
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp',
+        },
     }
 
     use {
         'hrsh7th/vim-vsnip',
-        requires = {'hrsh7th/vim-vsnip-integ'},
         config = conf.vim_vsnip,
     }
 
