@@ -18,7 +18,8 @@ function! MyTabLine()
         let result .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
 
         " tab label
-        let result .= ' ' . tab . ':'
+        " let result .= ' ' . tab . ':'
+        let result .= ' '
 
         " filename
         if (bufname != '')
