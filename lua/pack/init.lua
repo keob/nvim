@@ -9,12 +9,6 @@ return require('packer').startup(function()
     use { 'tpope/vim-surround' }
 
     use {
-        'Raimondi/delimitMate',
-        config = conf.delimimate,
-        event = 'InsertEnter'
-    }
-
-    use {
         'neovim/nvim-lspconfig',
         config = conf.nvim_lsp,
     }
