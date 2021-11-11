@@ -22,31 +22,31 @@ for type, icon in pairs(signs) do
 end
 
 local kind_presets = {
-    Text = " ",
-    Method = " ",
-    Function = " ",
-    Constructor = " ",
-    Field = "ﰠ ",
-    Variable = " ",
-    Class = "ﴯ ",
-    Interface = "ﰮ ",
-    Module = " ",
-    Property = "ﰠ ",
-    Unit = " ",
-    Value = " ",
-    Enum = " ",
-    Keyword = " ",
-    Snippet = " ",
-    Color = " ",
-    File = " ",
-    Reference = " ",
-    Folder = " ",
-    EnumMember = " ",
-    Constant = " ",
-    Struct = " ",
-    Event = " ",
-    Operator = " ",
-    TypeParameter = " "
+    Text = "  ",
+    Method = "  ",
+    Function = "  ",
+    Constructor = "  ",
+    Field = " ﰠ ",
+    Variable = "  ",
+    Class = " ﴯ ",
+    Interface = " ﰮ ",
+    Module = "  ",
+    Property = " ﰠ ",
+    Unit = "  ",
+    Value = "  ",
+    Enum = "  ",
+    Keyword = "  ",
+    Snippet = "  ",
+    Color = "  ",
+    File = "  ",
+    Reference = "  ",
+    Folder = "  ",
+    EnumMember = "  ",
+    Constant = "  ",
+    Struct = "  ",
+    Event = "  ",
+    Operator = "  ",
+    TypeParameter = "  "
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -105,12 +105,12 @@ cmp.setup({
             select = true,
         }),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     },
     formatting = {
         format = function(entry, vim_item)
@@ -128,13 +128,12 @@ cmp.setup({
     experimental = {
         ghost_text = false,
     },
-    sources = cmp.config.sources({
+    sources = {
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
-    }, {
         { name = 'buffer' },
         { name = 'path' },
-    })
+    }
 })
 
 cmp.setup.cmdline('/', {
@@ -178,24 +177,14 @@ lspconfig.rust_analyzer.setup({
     settings = {
         ["rust-analyzer"] = {
             assist = {
-                importMergeBehavior = "last",
+                importGranularity = "module",
                 importPrefix = "by_self",
             },
             cargo = {
+                allFeatures = true,
                 autoreload = true,
                 loadOutDirsFromCheck = true,
             },
-            diagnostics = {
-                disabled = {
-                    "unresolved-macro-call",
-                }
-            },
-            hoverActions = {
-                linksInHover = false,
-            },
-            procMacro = {
-                enable = true,
-            }
         }
     }
 })
