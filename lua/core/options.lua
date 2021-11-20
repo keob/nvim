@@ -1,7 +1,7 @@
 local opt = vim.opt
 local global = require('core.global')
 
-vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[colorscheme dracula]]
 
 local function load_options()
     local global_local = {
