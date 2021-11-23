@@ -1,5 +1,5 @@
 local api = vim.api
-local cmp = require('cmp')
+local cmp = require("cmp")
 local lspconfig = require("lspconfig")
 
 vim.lsp.set_log_level("warn")
@@ -46,11 +46,12 @@ local kind_presets = {
     Struct = "  ",
     Event = "  ",
     Operator = "  ",
-    TypeParameter = "  "
+    TypeParameter = "  ",
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
         virtual_text = false,
         -- virtual_text = {
         --     spacing = 4,
@@ -68,7 +69,9 @@ end
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    return col ~= 0
+        and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s")
+            == nil
 end
 
 local feedkey = function(key, mode)
@@ -100,17 +103,17 @@ cmp.setup({
                 feedkey("<Plug>(vsnip-jump-prev)", "")
             end
         end, { "i", "s" }),
-        ['<CR>'] = cmp.mapping.confirm({
+        ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     },
     formatting = {
         format = function(entry, vim_item)
@@ -123,38 +126,40 @@ cmp.setup({
             })[entry.source.name]
             -- vim_item.kind, vim_item.menu = vim_item.menu, vim_item.kind
             return vim_item
-        end
+        end,
     },
     experimental = {
         ghost_text = false,
     },
     sources = {
-        { name = 'nvim_lsp' },
-        { name = 'vsnip' },
-        { name = 'buffer' },
-        { name = 'path' },
-    }
+        { name = "nvim_lsp" },
+        { name = "vsnip" },
+        { name = "buffer" },
+        { name = "path" },
+    },
 })
 
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
     sources = {
-        { name = 'buffer' }
-    }
+        { name = "buffer" },
+    },
 })
 
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
     sources = cmp.config.sources({
-        { name = 'path' }
+        { name = "path" },
     }, {
-        { name = 'cmdline' }
-    })
+        { name = "cmdline" },
+    }),
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+)
 
 lspconfig.gopls.setup({
     cmd = { "gopls", "serve" },
-    filetypes = {"go"},
+    filetypes = { "go" },
     on_attach = enhance_attach,
     capabilities = capabilities,
     settings = {
@@ -166,12 +171,12 @@ lspconfig.gopls.setup({
             staticcheck = true,
             linksInHover = false,
         },
-    }
+    },
 })
 
 lspconfig.rust_analyzer.setup({
     cmd = { "rust-analyzer" },
-    filetypes = {"rust"},
+    filetypes = { "rust" },
     on_attach = enhance_attach,
     capabilities = capabilities,
     settings = {
@@ -185,8 +190,8 @@ lspconfig.rust_analyzer.setup({
                 autoreload = true,
                 loadOutDirsFromCheck = true,
             },
-        }
-    }
+        },
+    },
 })
 
 lspconfig.clangd.setup({
@@ -200,44 +205,29 @@ lspconfig.clangd.setup({
         "--clang-tidy",
         "--cross-file-rename",
         "--completion-style=detailed",
-        "--header-insertion=iwyu"
+        "--header-insertion=iwyu",
     },
-    filetypes = {"c", "cpp", "objc", "objcpp"},
+    filetypes = { "c", "cpp", "objc", "objcpp" },
     on_attach = enhance_attach,
     capabilities = capabilities,
     root_dir = vim.loop.cwd,
     init_options = {
-        clangdFileStatus = true
-    }
+        clangdFileStatus = true,
+    },
 })
 
 lspconfig.pyright.setup({
     cmd = { "pyright-langserver", "--stdio" },
-    filetypes = {"python"},
+    filetypes = { "python" },
     on_attach = enhance_attach,
     capabilities = capabilities,
     root_dir = vim.loop.cwd,
     settings = {
         python = {
             analysis = {
-                autoSearchPaths = true;
-                useLibraryCodeForTypes = true;
-            }
-        }
-    }
-})
-
-lspconfig.tsserver.setup({
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = {
-        "javascript",
-        "typescript",
-        "javascript.jsx",
-        "typescript.tsx",
-        "javascriptreact",
-        "typescriptreact",
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+            },
+        },
     },
-    on_attach = enhance_attach,
-    capabilities = capabilities,
-    root_dir = vim.loop.cwd,
 })

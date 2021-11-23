@@ -4,13 +4,24 @@ function config.nvim_lsp()
     require("pack.lsp")
 end
 
+function config.treesitter()
+    require("nvim-treesitter.configs").setup({
+        ensure_installed = "maintained",
+        highlight = {
+            enable = true,
+            disable = {},
+            additional_vim_regex_highlighting = false,
+        },
+    })
+end
+
 function config.vim_vsnip()
     vim.g.vsnip_snippet_dir = os.getenv("HOME") .. "/.config/nvim/snippets"
 end
 
 function config.telescope()
     local actions = require("telescope.actions")
-    require("telescope").setup {
+    require("telescope").setup({
         defaults = {
             vimgrep_arguments = {
                 "rg",
@@ -20,12 +31,12 @@ function config.telescope()
                 "--smart-case",
                 "--column",
                 "--no-heading",
-                "--with-filename"
+                "--with-filename",
             },
             mappings = {
                 n = {
-                    ["<Esc>"] = actions.close
-                }
+                    ["<Esc>"] = actions.close,
+                },
             },
             history = false,
             prompt_prefix = "» ",
@@ -34,7 +45,14 @@ function config.telescope()
             sorting_strategy = "ascending",
             scroll_strategy = "cycle",
             layout_strategy = "horizontal",
-            file_ignore_patterns = {".git/", ".cache/", ".venv/", "node_modules/", "target/", "build/"},
+            file_ignore_patterns = {
+                ".git/",
+                ".cache/",
+                ".venv/",
+                "node_modules/",
+                "target/",
+                "build/",
+            },
             layout_config = {
                 prompt_position = "top",
                 horizontal = {
@@ -46,9 +64,9 @@ function config.telescope()
                         end
                     end,
                 },
-            }
+            },
         },
-    }
+    })
 end
 
 return config
