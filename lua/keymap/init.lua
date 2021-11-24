@@ -31,11 +31,12 @@ local plug_map = {
     ["n|gs"] = map_cr("lua vim.lsp.buf.signature_help()"):with_noremap():with_silent(),
 
     -- Telescope
+    ["n|<leader>fgb"] = map_cr("Telescope git_branches"):with_silent():with_noremap(),
+    ["n|<leader>fgc"] = map_cr("Telescope git_commits"):with_silent():with_noremap(),
+    ["n|<leader>fgs"] = map_cr("Telescope git_status"):with_silent():with_noremap(),
     ["n|<leader>bb"] = map_cr("Telescope buffers"):with_silent():with_noremap(),
     ["n|<leader>fh"] = map_cr("Telescope help_tags"):with_silent():with_noremap(),
     ["n|<leader>fl"] = map_cr("Telescope live_grep"):with_silent():with_noremap(),
-    ["n|<leader>fg"] = map_cr("Telescope grep_string"):with_silent():with_noremap(),
-    ["n|<leader>fc"] = map_cu("Telescope git_commits"):with_noremap():with_silent(),
     ["n|<leader>fb"] = map_cr("Telescope file_browser"):with_silent():with_noremap(),
     ["n|<leader>fs"] = map_cr("Telescope find_files hidden=true"):with_silent():with_noremap(),
 
