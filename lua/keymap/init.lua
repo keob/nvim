@@ -12,14 +12,10 @@ local plug_map = {
         :with_silent(),
     ["n|<leader>m"] = map_cr("lua vim.lsp.diagnostic.goto_prev()"):with_noremap():with_silent(),
     ["n|<leader>n"] = map_cr("lua vim.lsp.diagnostic.goto_next()"):with_noremap():with_silent(),
-    ["n|<leader>ll"] = map_cr("call v:lua.open_lsp_log()")
-        :with_noremap()
-        :with_silent()
-        :with_nowait(),
-    ["n|<leader>lr"] = map_cr("call v:lua.reload_lsp()"):with_noremap():with_silent():with_nowait(),
+    ["n|<leader>lrl"] = map_cr("call v:lua.reload_lsp()"):with_noremap():with_silent():with_nowait(),
     ["n|<leader>rn"] = map_cr("lua vim.lsp.buf.rename()"):with_noremap():with_silent(),
-    ["n|<leader>cs"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
-    ["n|<leader>cw"] = map_cr("lua vim.lsp.buf.workspace_symbol()"):with_noremap():with_silent(),
+    ["n|<leader>ld"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
+    ["n|<leader>lw"] = map_cr("lua vim.lsp.buf.workspace_symbol()"):with_noremap():with_silent(),
     ["n|<leader>ff"] = map_cr("lua vim.lsp.buf.formatting()"):with_noremap():with_silent(),
     ["n|K"] = map_cr("lua vim.lsp.buf.hover()"):with_noremap():with_silent(),
     ["n|ga"] = map_cr("lua vim.lsp.buf.code_action()"):with_noremap():with_silent(),

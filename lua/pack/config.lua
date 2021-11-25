@@ -35,7 +35,7 @@ function config.telescope()
             },
             mappings = {
                 n = {
-                    ["<Esc>"] = actions.close,
+                    ["q"] = actions.close,
                 },
             },
             history = false,
