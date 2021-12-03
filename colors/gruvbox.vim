@@ -33,11 +33,11 @@ if !exists('g:gruvbox_italic')
 endif
 
 if !exists('g:gruvbox_undercurl')
-  let g:gruvbox_undercurl = 1
+  let g:gruvbox_undercurl = 0
 endif
 
 if !exists('g:gruvbox_underline')
-  let g:gruvbox_underline = 1
+  let g:gruvbox_underline = 0
 endif
 
 if !exists('g:gruvbox_inverse')
