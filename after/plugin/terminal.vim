@@ -1,9 +1,3 @@
-if exists("g:loaded_my_terminal")
-    finish
-endif
-
-let g:loaded_my_terminal = 1
-
 function! s:small_terminal() abort
     new
     wincmd J

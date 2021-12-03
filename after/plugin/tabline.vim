@@ -1,9 +1,3 @@
-if exists("g:loaded_my_tabline")
-    finish
-endif
-
-let g:loaded_my_tabline = 1
-
 function! MyTabLine()
     let result = ''
     for i in range(tabpagenr('$'))
