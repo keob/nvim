@@ -117,7 +117,7 @@ local function load_options()
         breakindent = true,
         breakindentopt = "sbr",
         fillchars = {
-            vert = " ",
+            vert = "|",
             fold = " ",
             eob = " ",
             diff = "-",
