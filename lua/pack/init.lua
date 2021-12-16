@@ -6,7 +6,6 @@ return require("packer").startup(function()
     use({ "wbthomason/packer.nvim" })
 
     use({ "tyru/caw.vim" })
-    use({ "tpope/vim-surround" })
 
     use({
         "neovim/nvim-lspconfig",

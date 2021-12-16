@@ -10,7 +10,6 @@ function config.treesitter()
         highlight = {
             enable = true,
             disable = {},
-            additional_vim_regex_highlighting = false,
         },
     })
 end
