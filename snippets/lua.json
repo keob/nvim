@@ -61,7 +61,7 @@
     },
     "function": {
         "prefix": "function",
-        "body": "function ${1:name}(${2:...})\n\t${0:-- body}\nend",
+        "body": "function ${1:name}(${2:...})\n\t$0\nend",
         "description": "function()"
     },
     "getfenv": {
@@ -76,12 +76,12 @@
     },
     "if": {
         "prefix": "if",
-        "body": "if ${1:condition} then\n\t${0:-- body}\nend",
+        "body": "if ${1:condition} then\n\t$0\nend",
         "description": "if statement"
     },
     "ifel": {
-        "prefix": "ifel",
-        "body": "if ${1:condition} then\n\t${2:-- body}\nelse\n\t${0:-- body}\nend",
+        "prefix": "ife",
+        "body": "if ${1:condition} then\n\t$2\nelse\n\t$0\nend",
         "description": "if else statement"
     }
 }
