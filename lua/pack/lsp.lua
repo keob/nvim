@@ -1,3 +1,5 @@
+local fmt = string.format
+
 local api = vim.api
 local cmp = require("cmp")
 local lspconfig = require("lspconfig")
@@ -117,14 +119,13 @@ cmp.setup({
     },
     formatting = {
         format = function(entry, vim_item)
-            vim_item.kind = kind_presets[vim_item.kind]
+            vim_item.kind = fmt("%s %s", kind_presets[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
                 nvim_lsp = "LSP",
                 path = "Path",
                 buffer = "Buffer",
                 vsnip = "Snippet",
             })[entry.source.name]
-            -- vim_item.kind, vim_item.menu = vim_item.menu, vim_item.kind
             return vim_item
         end,
     },
