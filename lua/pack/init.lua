@@ -5,7 +5,15 @@ vim.cmd("packadd packer.nvim")
 return require("packer").startup(function()
     use({ "wbthomason/packer.nvim" })
 
-    use({ "tyru/caw.vim" })
+    use({
+        "numToStr/Comment.nvim",
+        config = conf.comment,
+    })
+
+    use({
+        "windwp/nvim-autopairs",
+        config = conf.autopairs,
+    })
 
     use({
         "neovim/nvim-lspconfig",

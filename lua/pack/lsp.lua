@@ -232,3 +232,18 @@ lspconfig.pyright.setup({
         },
     },
 })
+
+lspconfig.tsserver.setup({
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = {
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact",
+    },
+    on_attach = enhance_attach,
+    capabilities = capabilities,
+    init_options = {
+        hostInfo = "neovim",
+    },
+})
