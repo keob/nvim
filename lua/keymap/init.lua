@@ -7,10 +7,9 @@ local map_args = bind.map_args
 local plug_map = {
     -- LSP
     ["n|<leader>q"] = map_cr("lua vim.diagnostic.setloclist()"):with_noremap():with_silent(),
-    ["n|<leader>e"] = map_cr("lua vim.diagnostic.open_float()"):with_noremap() :with_silent(),
+    ["n|<leader>e"] = map_cr("lua vim.diagnostic.open_float()"):with_noremap():with_silent(),
     ["n|<leader>m"] = map_cr("lua vim.diagnostic.goto_prev()"):with_noremap():with_silent(),
     ["n|<leader>n"] = map_cr("lua vim.diagnostic.goto_next()"):with_noremap():with_silent(),
-    ["n|<leader>lrl"] = map_cr("call v:lua.reload_lsp()"):with_noremap():with_silent():with_nowait(),
     ["n|<leader>rn"] = map_cr("lua vim.lsp.buf.rename()"):with_noremap():with_silent(),
     ["n|<leader>ld"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
     ["n|<leader>lw"] = map_cr("lua vim.lsp.buf.workspace_symbol()"):with_noremap():with_silent(),
