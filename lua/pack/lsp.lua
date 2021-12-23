@@ -6,16 +6,6 @@ local lspconfig = require("lspconfig")
 
 vim.lsp.set_log_level("warn")
 
-function _G.open_lsp_log()
-    local path = vim.lsp.get_log_path()
-    vim.cmd("edit " .. path)
-end
-
-function _G.reload_lsp()
-    vim.lsp.stop_client(vim.lsp.get_active_clients())
-    vim.cmd("edit")
-end
-
 local signs = { Error = "»", Warn = "›", Hint = "•", Info = "≡" }
 
 for type, icon in pairs(signs) do
