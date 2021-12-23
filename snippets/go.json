@@ -41,7 +41,7 @@
     },
     "tag": {
         "prefix": "tag",
-        "body": "`$1:\"$2\"`",
+        "body": "`$1:\"$0\"`",
         "description": "struct tag"
     },
     "package main and main function": {
