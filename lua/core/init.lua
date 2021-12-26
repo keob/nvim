@@ -28,10 +28,6 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.python3_host_skip_check = 1
 
-vim.g.mapleader = " "
-vim.api.nvim_set_keymap("n", " ", "", { noremap = true })
-vim.api.nvim_set_keymap("x", " ", "", { noremap = true })
-
 local load_core = function()
     -- disable_distribution_plugins()
 end

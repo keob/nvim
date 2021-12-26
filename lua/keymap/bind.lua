@@ -1,91 +1,60 @@
-local rhs_options = {}
+local bind = {}
 
-function rhs_options:new()
-    local instance = {
-        cmd = "",
-        options = {
-            noremap = false,
-            silent = false,
-            expr = false,
-            nowait = false,
-        },
-    }
-    setmetatable(instance, self)
-    self.__index = self
-    return instance
+local opts = { noremap = true, silent = true }
+
+-- Normal, Visual, Select, Operator-pending
+function bind.map(mode, key, command)
+    vim.api.nvim_set_keymap(mode, key, command, opts)
 end
 
-function rhs_options:map_cmd(cmd_string)
-    self.cmd = cmd_string
-    return self
+-- Normal
+function bind.nmap(key, command)
+    bind.map("n", key, command)
 end
 
-function rhs_options:map_cr(cmd_string)
-    self.cmd = (":%s<CR>"):format(cmd_string)
-    return self
+-- Visual and Select
+function bind.vmap(key, command)
+    bind.map("v", key, command)
 end
 
-function rhs_options:map_args(cmd_string)
-    self.cmd = (":%s<Space>"):format(cmd_string)
-    return self
+-- Select
+function bind.smap(key, command)
+    bind.map("s", key, command)
 end
 
-function rhs_options:map_cu(cmd_string)
-    self.cmd = (":<C-u>%s<CR>"):format(cmd_string)
-    return self
+-- Visual
+function bind.xmap(key, command)
+    bind.map("x", key, command)
 end
 
-function rhs_options:with_silent()
-    self.options.silent = true
-    return self
+-- Operator-pending
+function bind.omap(key, command)
+    bind.map("o", key, command)
 end
 
-function rhs_options:with_noremap()
-    self.options.noremap = true
-    return self
+-- Insert and Command-line
+function bind.icmap(key, command)
+    bind.map("!", key, command)
 end
 
-function rhs_options:with_expr()
-    self.options.expr = true
-    return self
+-- Insert
+function bind.imap(key, command)
+    bind.map("i", key, command)
 end
 
-function rhs_options:with_nowait()
-    self.options.nowait = true
-    return self
+-- Insert, Command-line, Lang-Arg
+function bind.lmap(key, command)
+    bind.map("l", key, command)
 end
 
-local pbind = {}
-
-function pbind.map_cr(cmd_string)
-    local ro = rhs_options:new()
-    return ro:map_cr(cmd_string)
+-- Command-line
+function bind.cmap(key, command)
+    bind.map("c", key, command)
 end
 
-function pbind.map_cmd(cmd_string)
-    local ro = rhs_options:new()
-    return ro:map_cmd(cmd_string)
+-- Terminal
+function bind.tmap(key, command)
+    bind.map("t", key, command)
 end
 
-function pbind.map_cu(cmd_string)
-    local ro = rhs_options:new()
-    return ro:map_cu(cmd_string)
-end
-
-function pbind.map_args(cmd_string)
-    local ro = rhs_options:new()
-    return ro:map_args(cmd_string)
-end
-
-function pbind.nvim_load_mapping(mapping)
-    for key, value in pairs(mapping) do
-        local mode, keymap = key:match("([^|]*)|?(.*)")
-        if type(value) == "table" then
-            local rhs = value.cmd
-            local options = value.options
-            vim.api.nvim_set_keymap(mode, keymap, rhs, options)
-        end
-    end
-end
-
-return pbind
+return bind

@@ -1,88 +1,99 @@
 local bind = require("keymap.bind")
-local map_cr = bind.map_cr
-local map_cu = bind.map_cu
-local map_cmd = bind.map_cmd
-local map_args = bind.map_args
+local nmap = bind.nmap
+local vmap = bind.vmap
+local tmap = bind.tmap
 
-local plug_map = {
-    -- LSP
-    ["n|<leader>q"] = map_cr("lua vim.diagnostic.setloclist()"):with_noremap():with_silent(),
-    ["n|<leader>e"] = map_cr("lua vim.diagnostic.open_float()"):with_noremap():with_silent(),
-    ["n|<leader>m"] = map_cr("lua vim.diagnostic.goto_prev()"):with_noremap():with_silent(),
-    ["n|<leader>n"] = map_cr("lua vim.diagnostic.goto_next()"):with_noremap():with_silent(),
-    ["n|<leader>rn"] = map_cr("lua vim.lsp.buf.rename()"):with_noremap():with_silent(),
-    ["n|<leader>ld"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
-    ["n|<leader>lw"] = map_cr("lua vim.lsp.buf.workspace_symbol()"):with_noremap():with_silent(),
-    ["n|<leader>ff"] = map_cr("lua vim.lsp.buf.formatting()"):with_noremap():with_silent(),
-    ["n|K"] = map_cr("lua vim.lsp.buf.hover()"):with_noremap():with_silent(),
-    ["n|ga"] = map_cr("lua vim.lsp.buf.code_action()"):with_noremap():with_silent(),
-    ["n|gd"] = map_cr("lua vim.lsp.buf.definition()"):with_noremap():with_silent(),
-    ["n|gt"] = map_cr("lua vim.lsp.buf.type_definition()"):with_noremap():with_silent(),
-    ["n|gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
-    ["n|gD"] = map_cr("lua vim.lsp.buf.declaration()"):with_noremap():with_silent(),
-    ["n|gi"] = map_cr("lua vim.lsp.buf.implementation()"):with_noremap():with_silent(),
-    ["n|gs"] = map_cr("lua vim.lsp.buf.signature_help()"):with_noremap():with_silent(),
+-- Leader
+vim.g.mapleader = " "
+nmap(" ", "")
+vmap(" ", "")
 
-    -- Telescope
-    ["n|<leader>fgb"] = map_cr("Telescope git_branches"):with_silent():with_noremap(),
-    ["n|<leader>fgc"] = map_cr("Telescope git_commits"):with_silent():with_noremap(),
-    ["n|<leader>fgs"] = map_cr("Telescope git_status"):with_silent():with_noremap(),
-    ["n|<leader>bb"] = map_cr("Telescope buffers"):with_silent():with_noremap(),
-    ["n|<leader>fh"] = map_cr("Telescope help_tags"):with_silent():with_noremap(),
-    ["n|<leader>fl"] = map_cr("Telescope live_grep"):with_silent():with_noremap(),
-    ["n|<leader>fb"] = map_cr("Telescope file_browser"):with_silent():with_noremap(),
-    ["n|<leader>fs"] = map_cr("Telescope find_files hidden=true"):with_silent():with_noremap(),
+-- LSP
+nmap("K", ":lua vim.lsp.buf.hover()<CR>")
+nmap("gd", ":lua vim.lsp.buf.definition()<CR>")
+nmap("gr", ":lua vim.lsp.buf.references()<CR>")
+nmap("gD", ":lua vim.lsp.buf.declaration()<CR>")
+nmap("ga", ":lua vim.lsp.buf.code_action()<CR>")
+nmap("gi", ":lua vim.lsp.buf.implementation()<CR>")
+nmap("gs", ":lua vim.lsp.buf.signature_help()<CR>")
+nmap("gt", ":lua vim.lsp.buf.type_definition()<CR>")
+nmap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+nmap("<leader>ff", ":lua vim.lsp.buf.formatting()<CR>")
+nmap("<leader>m", ":lua vim.diagnostic.goto_prev()<CR>")
+nmap("<leader>n", ":lua vim.diagnostic.goto_next()<CR>")
+nmap("<leader>q", ":lua vim.diagnostic.setloclist()<CR>")
+nmap("<leader>e", ":lua vim.diagnostic.open_float()<CR>")
+nmap("<leader>ld", ":lua vim.lsp.buf.document_symbol()<CR>")
+nmap("<leader>lw", ":lua vim.lsp.buf.workspace_symbol()<CR>")
 
-    -- Packer
-    ["n|<leader>pi"] = map_cr("PackerInstall"):with_noremap(),
-    ["n|<leader>pu"] = map_cr("PackerUpdate"):with_noremap(),
-    ["n|<leader>pc"] = map_cr("PackerCompile"):with_noremap(),
-}
+-- Telescope
+nmap("<leader>fgs", ":Telescope git_status<CR>")
+nmap("<leader>fgc", ":Telescope git_commits<CR>")
+nmap("<leader>fgb", ":Telescope git_branches<CR>")
+nmap("<leader>bb", ":Telescope buffers<CR>")
+nmap("<leader>fh", ":Telescope help_tags<CR>")
+nmap("<leader>fl", ":Telescope live_grep<CR>")
+nmap("<leader>fb", ":Telescope file_browser<CR>")
+nmap("<leader>fs", ":Telescope find_files hidden=true<CR>")
 
-local nvim_map = {
-    ["n|<leader><leader>q"] = map_cr("q!"):with_silent():with_noremap(),
-    ["n|<leader><leader>a"] = map_cr("wqa"):with_silent():with_noremap(),
-    ["n|<leader>w"] = map_cr("w"):with_silent():with_noremap(),
+-- Packer
+nmap("<leader>pi", ":PackerInstall<CR>")
+nmap("<leader>pu", ":PackerUpdate<CR>")
+nmap("<leader>pc", ":PackerCompile<CR>")
 
-    ["n|<leader><CR>"] = map_cr("nohl"):with_silent():with_noremap(),
+-- Save Quit
+nmap("<leader>w", ":w<CR>")
+nmap("<leader><leader>q", ":q!<CR>")
+nmap("<leader><leader>a", ":wqa<CR>")
 
-    -- Select
-    ["n|<leader>sa"] = map_cmd("ggVG"):with_silent():with_noremap(),
-    ["n|<leader>se"] = map_cmd("VG"):with_silent():with_noremap(),
-    ["n|<leader>sh"] = map_cmd("Vgg"):with_silent():with_noremap(),
+-- Select
+nmap("<leader>sa", "ggVG")
+nmap("<leader>se", "VG")
+nmap("<leader>sh", "Vgg")
 
-    -- Tab
-    ["n|<leader>tc"] = map_cr("tabclose"):with_silent():with_noremap(),
-    ["n|<leader>th"] = map_cr("tabfirst"):with_silent():with_noremap(),
-    ["n|<leader>tl"] = map_cr("tablast"):with_silent():with_noremap(),
-    ["n|<leader>tn"] = map_cr("tabnext"):with_silent():with_noremap(),
-    ["n|<leader>tp"] = map_cr("tabprev"):with_silent():with_noremap(),
+-- Tab
+nmap("<leader>tc", ":tabclose<CR>")
+nmap("<leader>tf", ":tabfirst<CR>")
+nmap("<leader>tl", ":tablast<CR>")
+nmap("<leader>tn", ":tabn<CR>")
+nmap("<leader>tp", ":tabp<CR>")
 
-    -- Buffer
-    ["n|<leader>bn"] = map_cr("bnext"):with_silent():with_noremap(),
-    ["n|<leader>bm"] = map_cr("bp"):with_silent():with_noremap(),
-    ["n|<leader>bd"] = map_cr("bd"):with_silent():with_noremap(),
+-- Buffer
+nmap("<leader>bn", ":bn<CR>")
+nmap("<leader>bp", ":bp<CR>")
+nmap("<leader>bd", ":bd<CR>")
 
-    -- Increment/Decrement
-    ["n|+"] = map_cmd("<C-a>"):with_silent():with_noremap(),
-    ["n|-"] = map_cmd("<C-x>"):with_silent():with_noremap(),
+-- Increment Decrement
+nmap("+", "<C-a>")
+nmap("-", "<C-x>")
 
-    -- Split window
-    ["n|<leader>ss"] = map_cr("split"):with_silent():with_noremap(),
-    ["n|<leader>sv"] = map_cr("vsplit"):with_silent():with_noremap(),
+-- Split window
+nmap("<leader>ss", ":split<CR>")
+nmap("<leader>sv", ":vsplit<CR>")
 
-    -- Move window
-    ["n|<C-j>"] = map_cmd("<C-W>j"):with_silent():with_noremap(),
-    ["n|<C-k>"] = map_cmd("<C-W>k"):with_silent():with_noremap(),
-    ["n|<C-h>"] = map_cmd("<C-W>h"):with_silent():with_noremap(),
-    ["n|<C-l>"] = map_cmd("<C-W>l"):with_silent():with_noremap(),
+-- Resize window
+nmap("<Up>", ":res +2<CR>")
+nmap("<Down>", ":res -2<CR>")
+nmap("<Left>", ":vertical resize-2<CR>")
+nmap("<Right>", ":vertical resize+2<CR>")
 
-    ["t|<Esc>"] = map_cmd("<C-\\><C-n>"):with_silent():with_noremap(),
-    ["t|<C-h>"] = map_cmd("<C-\\><C-N><C-w>h"):with_silent():with_noremap(),
-    ["t|<C-j>"] = map_cmd("<C-\\><C-N><C-w>j"):with_silent():with_noremap(),
-    ["t|<C-k>"] = map_cmd("<C-\\><C-N><C-w>k"):with_silent():with_noremap(),
-    ["t|<C-l>"] = map_cmd("<C-\\><C-N><C-w>l"):with_silent():with_noremap(),
-}
+-- Move window
+nmap("<C-j>", "<C-W>j")
+nmap("<C-k>", "<C-W>k")
+nmap("<C-h>", "<C-W>h")
+nmap("<C-l>", "<C-W>l")
 
-bind.nvim_load_mapping(plug_map)
-bind.nvim_load_mapping(nvim_map)
+-- Move line
+nmap("<M-j>", ":m .+1<CR>")
+nmap("<M-k>", ":m .-2<CR>")
+
+-- Move block
+vmap("<M-j>", ":m '>+1<CR>gv")
+vmap("<M-k>", ":m '<-2<CR>gv")
+
+-- Terminal
+tmap("<Esc>", "<C-\\><C-n>")
+tmap("<C-j>", "<C-\\><C-N><C-w>j")
+tmap("<C-k>", "<C-\\><C-N><C-w>k")
+tmap("<C-h>", "<C-\\><C-N><C-w>h")
+tmap("<C-l>", "<C-\\><C-N><C-w>l")
