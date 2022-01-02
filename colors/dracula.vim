@@ -74,17 +74,6 @@ let g:dracula#palette.color_15 = '#FFFFFF'
 
 " }}}
 
-" Helper function that takes a variadic list of filetypes as args and returns
-" whether or not the execution of the ftplugin should be aborted.
-func! dracula#should_abort(...)
-  if ! exists('g:colors_name') || g:colors_name !=# 'dracula'
-    return 1
-  elseif a:0 > 0 && (! exists('b:current_syntax') || index(a:000, b:current_syntax) == -1)
-    return 1
-  endif
-    return 0
-endfunction
-
 " Palette: {{{2
 
 let s:fg        = g:dracula#palette.fg
@@ -123,6 +112,7 @@ if has('terminal')
 endif
 
 " }}}2
+
 " User Configuration: {{{2
 
 if !exists('g:dracula_bold')
@@ -154,6 +144,7 @@ if !exists('g:dracula_colorterm')
 endif
 
 "}}}2
+
 " Script Helpers: {{{2
 
 let s:attrs = {
@@ -196,6 +187,7 @@ function! s:h(scope, fg, ...) " bg, attr_list, special
 endfunction
 
 "}}}2
+
 " Dracula Highlight Groups: {{{2
 
 call s:h('DraculaBgLight', s:none, s:bglight)
@@ -207,7 +199,7 @@ call s:h('DraculaFg', s:fg)
 call s:h('DraculaFgUnderline', s:fg, s:none, [s:attrs.underline])
 call s:h('DraculaFgBold', s:fg, s:none, [s:attrs.bold])
 
-call s:h('DraculaComment', s:comment, s:none, [s:attrs.italic])
+call s:h('DraculaComment', s:comment)
 call s:h('DraculaCommentBold', s:comment, s:none, [s:attrs.bold])
 
 call s:h('DraculaSelection', s:none, s:selection)
@@ -259,13 +251,14 @@ call s:h('DraculaDiffDelete', s:red, s:bgdark)
 " }}}2
 
 " }}}
+
 " User Interface: {{{
 
 set background=dark
 
 " Required as some plugins will overwrite
 call s:h('Normal', s:fg, g:dracula_colorterm || has('gui_running') ? s:bg : s:none )
-call s:h('StatusLine', s:none, s:bglighter, [s:attrs.bold])
+call s:h('StatusLine', s:none, s:bglighter)
 call s:h('StatusLineNC', s:none, s:bglight)
 call s:h('StatusLineTerm', s:none, s:bglighter, [s:attrs.bold])
 call s:h('StatusLineTermNC', s:none, s:bglight)
@@ -306,6 +299,7 @@ hi! link VisualNOS    Visual
 hi! link WarningMsg   DraculaOrangeInverse
 
 " }}}
+
 " Syntax: {{{
 
 " Required as some plugins will overwrite
@@ -318,14 +312,24 @@ if has('nvim')
   hi! link LspReferenceText DraculaSelection
   hi! link LspReferenceRead DraculaSelection
   hi! link LspReferenceWrite DraculaSelection
-  hi! link LspDiagnosticsDefaultInformation DraculaCyan
-  hi! link LspDiagnosticsDefaultHint DraculaCyan
-  hi! link LspDiagnosticsDefaultError DraculaError
-  hi! link LspDiagnosticsDefaultWarning DraculaOrange
-  hi! link LspDiagnosticsUnderlineError DraculaErrorLine
-  hi! link LspDiagnosticsUnderlineHint DraculaInfoLine
-  hi! link LspDiagnosticsUnderlineInformation DraculaInfoLine
-  hi! link LspDiagnosticsUnderlineWarning DraculaWarnLine
+
+  hi! link LspDiagnosticsDefaultInformation DiagnosticInfo
+  hi! link LspDiagnosticsDefaultHint DiagnosticHint
+  hi! link LspDiagnosticsDefaultError DiagnosticError
+  hi! link LspDiagnosticsDefaultWarning DiagnosticWarn
+  hi! link LspDiagnosticsUnderlineError DiagnosticUnderlineError
+  hi! link LspDiagnosticsUnderlineHint DiagnosticUnderlineHint
+  hi! link LspDiagnosticsUnderlineInformation DiagnosticUnderlineInfo
+  hi! link LspDiagnosticsUnderlineWarning DiagnosticUnderlineWarn
+
+  hi! link DiagnosticInfo DraculaCyan
+  hi! link DiagnosticHint DraculaCyan
+  hi! link DiagnosticError DraculaError
+  hi! link DiagnosticWarn DraculaOrange
+  hi! link DiagnosticUnderlineError DraculaErrorLine
+  hi! link DiagnosticUnderlineHint DraculaInfoLine
+  hi! link DiagnosticUnderlineInfo DraculaInfoLine
+  hi! link DiagnosticUnderlineWarn DraculaWarnLine
 else
   hi! link SpecialKey DraculaPink
 endif
@@ -382,23 +386,21 @@ hi! link helpBacktick Special
 "}}}
 
 " Fzf: {{{
-if exists('g:loaded_fzf') && ! exists('g:fzf_colors')
-  let g:fzf_colors = {
-    \ 'fg':      ['fg', 'Normal'],
-    \ 'bg':      ['bg', 'Normal'],
-    \ 'hl':      ['fg', 'Search'],
-    \ 'fg+':     ['fg', 'Normal'],
-    \ 'bg+':     ['bg', 'Normal'],
-    \ 'hl+':     ['fg', 'DraculaOrange'],
-    \ 'info':    ['fg', 'DraculaPurple'],
-    \ 'border':  ['fg', 'Ignore'],
-    \ 'prompt':  ['fg', 'DraculaGreen'],
-    \ 'pointer': ['fg', 'Exception'],
-    \ 'marker':  ['fg', 'Keyword'],
-    \ 'spinner': ['fg', 'Label'],
-    \ 'header':  ['fg', 'Comment'],
-    \}
-endif
+let g:fzf_colors = {
+      \ 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Search'],
+      \ 'fg+':     ['fg', 'Normal'],
+      \ 'bg+':     ['bg', 'Normal'],
+      \ 'hl+':     ['fg', 'DraculaOrange'],
+      \ 'info':    ['fg', 'DraculaPurple'],
+      \ 'border':  ['fg', 'Ignore'],
+      \ 'prompt':  ['fg', 'DraculaGreen'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'],
+      \}
 "}}}
 
 " ALE: {{{
@@ -462,51 +464,41 @@ hi! link TSUnderline Underlined
 hi! link TSTitle DraculaYellow
 hi! link TSLiteral DraculaYellow
 hi! link TSURI DraculaYellow
-" HTML and JSX tag attributes. By default, this group is linked to TSProperty,
-" which in turn links to Identifer (white).
+" HTML and JSX tag attributes
 hi! link TSTagAttribute DraculaGreenItalic
 " }}}
 
-" Filetype specific -----------------------------------------------------------
-" Diff: {{{
-hi! link diffFile    DraculaGreen
-hi! link diffNewFile DraculaRed
-
-hi! link diffAdded   DraculaGreen
-hi! link diffLine    DraculaCyanItalic
-hi! link diffRemoved DraculaRed
+" nvim-cmp: {{{
+" hi! link CmpItemAbbrDeprecated DraculaError
+"
+" hi! link CmpItemAbbrMatch DraculaFg
+" hi! link CmpItemAbbrMatchFuzzy DraculaFg
+"
+" hi! link CmpItemKindText DraculaFg
+" hi! link CmpItemKindMethod Function
+" hi! link CmpItemKindFunction Function
+" hi! link CmpItemKindConstructor DraculaCyan
+" hi! link CmpItemKindField DraculaOrange
+" hi! link CmpItemKindVariable DraculaPurpleItalic
+" hi! link CmpItemKindClass DraculaCyan
+" hi! link CmpItemKindInterface DraculaCyan
+" hi! link CmpItemKindModule DraculaYellow
+" hi! link CmpItemKindProperty DraculaPink
+" hi! link CmpItemKindUnit DraculaFg
+" hi! link CmpItemKindValue DraculaYellow
+" hi! link CmpItemKindEnum DraculaPink
+" hi! link CmpItemKindKeyword DraculaPink
+" hi! link CmpItemKindSnippet DraculaFg
+" hi! link CmpItemKindColor DraculaYellow
+" hi! link CmpItemKindFile DraculaYellow
+" hi! link CmpItemKindReference DraculaOrange
+" hi! link CmpItemKindFolder DraculaYellow
+" hi! link CmpItemKindEnumMember DraculaPurple
+" hi! link CmpItemKindConstant DraculaPurple
+" hi! link CmpItemKindStruct DraculaPink
+" hi! link CmpItemKindEvent DraculaFg
+" hi! link CmpItemKindOperator DraculaPink
+" hi! link CmpItemKindTypeParameter DraculaCyan
 " }}}
 
-"JSON: {{{
-hi! link jsonKeyword      DraculaCyan
-hi! link jsonKeywordMatch DraculaPink
-"}}}
-
-"VIM: {{{
-hi! link vimAutoCmdSfxList     Type
-hi! link vimAutoEventList      Type
-hi! link vimEnvVar             Constant
-hi! link vimFunction           Function
-hi! link vimHiBang             Keyword
-hi! link vimOption             Type
-hi! link vimSetMod             Keyword
-hi! link vimSetSep             Delimiter
-hi! link vimUserAttrbCmpltFunc Function
-hi! link vimUserFunc           Function
-"}}}
-
-"Lua: {{{
-hi! link luaFunc         DraculaCyan
-hi! link luaTable        DraculaFg
-hi! link luaBraces       DraculaFg
-hi! link luaBuiltIn      Constant
-hi! link luaDocTag       Keyword
-hi! link luaErrHand      DraculaCyan
-hi! link luaFuncArgName  DraculaOrangeItalic
-hi! link luaFuncCall     Function
-hi! link luaLocal        Keyword
-hi! link luaSpecialTable Constant
-hi! link luaSpecialValue DraculaCyan
-"}}}
-
-" vim: fdm=marker ts=2 sts=2 sw=2 et:
+" vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
