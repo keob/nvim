@@ -72,10 +72,10 @@ nmap("<leader>ss", ":split<CR>")
 nmap("<leader>sv", ":vsplit<CR>")
 
 -- Resize window
-nmap("<Up>", ":res +2<CR>")
-nmap("<Down>", ":res -2<CR>")
-nmap("<Left>", ":vertical resize-2<CR>")
-nmap("<Right>", ":vertical resize+2<CR>")
+nmap("<M-Up>", ":res +2<CR>")
+nmap("<M-Down>", ":res -2<CR>")
+nmap("<M-Left>", ":vertical resize-2<CR>")
+nmap("<M-Right>", ":vertical resize+2<CR>")
 
 -- Move window
 nmap("<C-j>", "<C-W>j")

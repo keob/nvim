@@ -189,7 +189,6 @@ lspconfig.clangd.setup({
     cmd = {
         "clangd",
         "-j=6",
-        "--compile-commands-dir=build",
         "--all-scopes-completion",
         "--enable-config",
         "--background-index",
