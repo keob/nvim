@@ -33,7 +33,6 @@ nmap("<leader>fgb", ":Telescope git_branches<CR>")
 nmap("<leader>bb", ":Telescope buffers<CR>")
 nmap("<leader>fh", ":Telescope help_tags<CR>")
 nmap("<leader>fl", ":Telescope live_grep<CR>")
-nmap("<leader>fb", ":Telescope file_browser<CR>")
 nmap("<leader>fs", ":Telescope find_files hidden=true<CR>")
 
 -- Packer
