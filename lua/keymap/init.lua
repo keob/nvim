@@ -43,7 +43,7 @@ nmap("<leader>pc", ":PackerCompile<CR>")
 -- Save Quit
 nmap("<leader>w", ":w<CR>")
 nmap("<leader><leader>q", ":q!<CR>")
-nmap("<leader><leader>a", ":wqa<CR>")
+nmap("<leader>x", ":wqa<CR>")
 
 -- Select
 nmap("<leader>sa", "ggVG")

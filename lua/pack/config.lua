@@ -66,13 +66,12 @@ function config.telescope()
         defaults = {
             vimgrep_arguments = {
                 "rg",
-                "--crlf",
-                "--follow",
-                "--hidden",
-                "--smart-case",
-                "--column",
                 "--no-heading",
                 "--with-filename",
+                "--line-number",
+                "--column",
+                "--hidden",
+                "--smart-case"
             },
             mappings = {
                 n = {

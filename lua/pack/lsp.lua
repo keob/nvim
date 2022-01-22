@@ -200,7 +200,6 @@ lspconfig.clangd.setup({
     filetypes = { "c", "cpp", "objc", "objcpp" },
     on_attach = enhance_attach,
     capabilities = capabilities,
-    root_dir = vim.loop.cwd,
     init_options = {
         clangdFileStatus = true,
     },
