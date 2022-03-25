@@ -190,48 +190,15 @@ lspconfig.clangd.setup({
         "clangd",
         "-j=6",
         "--all-scopes-completion",
-        "--enable-config",
         "--background-index",
         "--clang-tidy",
-        "--cross-file-rename",
         "--completion-style=detailed",
         "--header-insertion=iwyu",
+        "--inlay-hints",
+        "--enable-config",
     },
     filetypes = { "c", "cpp", "objc", "objcpp" },
     on_attach = enhance_attach,
     capabilities = capabilities,
-    init_options = {
-        clangdFileStatus = true,
-    },
-})
-
-lspconfig.pyright.setup({
-    cmd = { "pyright-langserver", "--stdio" },
-    filetypes = { "python" },
-    on_attach = enhance_attach,
-    capabilities = capabilities,
-    root_dir = vim.loop.cwd,
-    settings = {
-        python = {
-            analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-            },
-        },
-    },
-})
-
-lspconfig.tsserver.setup({
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = {
-        "javascript",
-        "typescript",
-        "javascriptreact",
-        "typescriptreact",
-    },
-    on_attach = enhance_attach,
-    capabilities = capabilities,
-    init_options = {
-        hostInfo = "neovim",
-    },
+    single_file_support = true,
 })
