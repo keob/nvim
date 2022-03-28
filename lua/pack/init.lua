@@ -1,55 +1,57 @@
-local conf = require("pack.config")
+vim.cmd('packadd packer.nvim')
 
-vim.cmd("packadd packer.nvim")
+return require('packer').startup(function()
+    local load_config = function(name)
+        return string.format("require'pack.%s'", name)
+    end
 
-return require("packer").startup(function()
-    use({ "wbthomason/packer.nvim" })
+    use({ 'wbthomason/packer.nvim' })
 
     use({
-        "numToStr/Comment.nvim",
-        config = conf.comment,
+        'numToStr/Comment.nvim',
+        config = load_config('comment'),
     })
 
     use({
-        "windwp/nvim-autopairs",
-        config = conf.autopairs,
+        'windwp/nvim-autopairs',
+        config = load_config('autopairs'),
     })
 
     use({
-        "neovim/nvim-lspconfig",
-        config = conf.nvim_lsp,
+        'neovim/nvim-lspconfig',
+        config = load_config('lsp'),
     })
 
     use({
-        "hrsh7th/nvim-cmp",
+        'hrsh7th/nvim-cmp',
         requires = {
-            "hrsh7th/cmp-vsnip",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp",
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp',
         },
     })
 
     use({
-        "hrsh7th/vim-vsnip",
-        config = conf.vim_vsnip,
+        'hrsh7th/vim-vsnip',
+        config = load_config('vsnip'),
     })
 
     use({
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = conf.treesitter,
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = load_config('treesitter'),
     })
 
     use({
-        "nvim-telescope/telescope.nvim",
+        'nvim-telescope/telescope.nvim',
         requires = {
-            { "nvim-lua/popup.nvim" },
-            { "nvim-lua/plenary.nvim" },
-            { "kyazdani42/nvim-web-devicons" },
+            { 'nvim-lua/popup.nvim' },
+            { 'nvim-lua/plenary.nvim' },
+            { 'kyazdani42/nvim-web-devicons' },
         },
-        config = conf.telescope,
-        cmd = "Telescope",
+        config = load_config('telescope'),
+        cmd = 'Telescope',
     })
 end)

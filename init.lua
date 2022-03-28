@@ -1,5 +1,5 @@
-require("core")
-require("pack")
-require("keymap")
+require('core')
+require('pack')
+require('keymap')
 
-vim.cmd("colorscheme dracula")
+vim.cmd('colorscheme dracula')

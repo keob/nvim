@@ -1,4 +1,4 @@
-require("core.options")
+require('core.options')
 
 local disable_distribution_plugins = function()
     vim.g.loaded_gzip = 1
