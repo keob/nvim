@@ -1,98 +1,95 @@
-local bind = require('keymap.bind')
-local nmap = bind.nmap
-local vmap = bind.vmap
-local tmap = bind.tmap
+local map = require('keymap.bind').map
 
 -- Leader
 vim.g.mapleader = ' '
-nmap(' ', '')
-vmap(' ', '')
+map('n', ' ', '')
+map('v', ' ', '')
 
 -- LSP
-nmap('K', ':lua vim.lsp.buf.hover()<CR>')
-nmap('gd', ':lua vim.lsp.buf.definition()<CR>')
-nmap('gr', ':lua vim.lsp.buf.references()<CR>')
-nmap('gD', ':lua vim.lsp.buf.declaration()<CR>')
-nmap('ga', ':lua vim.lsp.buf.code_action()<CR>')
-nmap('gi', ':lua vim.lsp.buf.implementation()<CR>')
-nmap('gs', ':lua vim.lsp.buf.signature_help()<CR>')
-nmap('gt', ':lua vim.lsp.buf.type_definition()<CR>')
-nmap('<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
-nmap('<leader>ff', ':lua vim.lsp.buf.formatting()<CR>')
-nmap('<leader>m', ':lua vim.diagnostic.goto_prev()<CR>')
-nmap('<leader>n', ':lua vim.diagnostic.goto_next()<CR>')
-nmap('<leader>q', ':lua vim.diagnostic.setloclist()<CR>')
-nmap('<leader>e', ':lua vim.diagnostic.open_float()<CR>')
-nmap('<leader>ld', ':lua vim.lsp.buf.document_symbol()<CR>')
-nmap('<leader>lw', ':lua vim.lsp.buf.workspace_symbol()<CR>')
+map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+map('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
+map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
+map('n', 'ga', ':lua vim.lsp.buf.code_action()<CR>')
+map('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
+map('n', 'gs', ':lua vim.lsp.buf.signature_help()<CR>')
+map('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
+map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+map('n', '<leader>ff', ':lua vim.lsp.buf.formatting()<CR>')
+map('n', '<leader>m', ':lua vim.diagnostic.goto_prev()<CR>')
+map('n', '<leader>n', ':lua vim.diagnostic.goto_next()<CR>')
+map('n', '<leader>q', ':lua vim.diagnostic.setloclist()<CR>')
+map('n', '<leader>e', ':lua vim.diagnostic.open_float()<CR>')
+map('n', '<leader>ld', ':lua vim.lsp.buf.document_symbol()<CR>')
+map('n', '<leader>lw', ':lua vim.lsp.buf.workspace_symbol()<CR>')
 
 -- Telescope
-nmap('<leader>fgs', ':Telescope git_status<CR>')
-nmap('<leader>fgc', ':Telescope git_commits<CR>')
-nmap('<leader>fgb', ':Telescope git_branches<CR>')
-nmap('<leader>bb', ':Telescope buffers<CR>')
-nmap('<leader>fh', ':Telescope help_tags<CR>')
-nmap('<leader>fl', ':Telescope live_grep<CR>')
-nmap('<leader>fs', ':Telescope find_files hidden=true<CR>')
+map('n', '<leader>fgs', ':Telescope git_status<CR>')
+map('n', '<leader>fgc', ':Telescope git_commits<CR>')
+map('n', '<leader>fgb', ':Telescope git_branches<CR>')
+map('n', '<leader>bb', ':Telescope buffers<CR>')
+map('n', '<leader>fh', ':Telescope help_tags<CR>')
+map('n', '<leader>fl', ':Telescope live_grep<CR>')
+map('n', '<leader>fs', ':Telescope find_files hidden=true<CR>')
 
 -- Packer
-nmap('<leader>pi', ':PackerInstall<CR>')
-nmap('<leader>pu', ':PackerUpdate<CR>')
-nmap('<leader>pc', ':PackerCompile<CR>')
+map('n', '<leader>pi', ':PackerInstall<CR>')
+map('n', '<leader>pu', ':PackerUpdate<CR>')
+map('n', '<leader>pc', ':PackerCompile<CR>')
 
 -- Save Quit
-nmap('<leader>w', ':w<CR>')
-nmap('<leader><leader>q', ':q!<CR>')
-nmap('<leader>x', ':wqa<CR>')
+map('n', '<leader>w', ':w<CR>')
+map('n', '<leader><leader>q', ':q!<CR>')
+map('n', '<leader>x', ':wqa<CR>')
 
 -- Select
-nmap('<leader>sa', 'ggVG')
-nmap('<leader>se', 'VG')
-nmap('<leader>sh', 'Vgg')
+map('n', '<leader>sa', 'ggVG')
+map('n', '<leader>se', 'VG')
+map('n', '<leader>sh', 'Vgg')
 
 -- Tab
-nmap('<leader>tc', ':tabclose<CR>')
-nmap('<leader>tf', ':tabfirst<CR>')
-nmap('<leader>tl', ':tablast<CR>')
-nmap('<leader>tn', ':tabn<CR>')
-nmap('<leader>tp', ':tabp<CR>')
+map('n', '<leader>tc', ':tabclose<CR>')
+map('n', '<leader>tf', ':tabfirst<CR>')
+map('n', '<leader>tl', ':tablast<CR>')
+map('n', '<leader>tn', ':tabn<CR>')
+map('n', '<leader>tp', ':tabp<CR>')
 
 -- Buffer
-nmap('<leader>bn', ':bn<CR>')
-nmap('<leader>bp', ':bp<CR>')
-nmap('<leader>bd', ':bd<CR>')
+map('n', '<leader>bn', ':bn<CR>')
+map('n', '<leader>bp', ':bp<CR>')
+map('n', '<leader>bd', ':bd<CR>')
 
 -- Increment Decrement
-nmap('+', '<C-a>')
-nmap('-', '<C-x>')
+map('n', '+', '<C-a>')
+map('n', '-', '<C-x>')
 
 -- Split window
-nmap('<leader>ss', ':split<CR>')
-nmap('<leader>sv', ':vsplit<CR>')
+map('n', '<leader>ss', ':split<CR>')
+map('n', '<leader>sv', ':vsplit<CR>')
 
 -- Resize window
-nmap('<M-Up>', ':res +2<CR>')
-nmap('<M-Down>', ':res -2<CR>')
-nmap('<M-Left>', ':vertical resize-2<CR>')
-nmap('<M-Right>', ':vertical resize+2<CR>')
+map('n', '<M-Up>', ':res +2<CR>')
+map('n', '<M-Down>', ':res -2<CR>')
+map('n', '<M-Left>', ':vertical resize-2<CR>')
+map('n', '<M-Right>', ':vertical resize+2<CR>')
 
 -- Move window
-nmap('<C-j>', '<C-W>j')
-nmap('<C-k>', '<C-W>k')
-nmap('<C-h>', '<C-W>h')
-nmap('<C-l>', '<C-W>l')
+map('n', '<C-j>', '<C-W>j')
+map('n', '<C-k>', '<C-W>k')
+map('n', '<C-h>', '<C-W>h')
+map('n', '<C-l>', '<C-W>l')
 
 -- Move line
-nmap('<M-j>', ':m .+1<CR>')
-nmap('<M-k>', ':m .-2<CR>')
+map('n', '<M-j>', ':m .+1<CR>')
+map('n', '<M-k>', ':m .-2<CR>')
 
 -- Move block
-vmap('<M-j>', ":m '>+1<CR>gv")
-vmap('<M-k>', ":m '<-2<CR>gv")
+map('v', '<M-j>', ":m '>+1<CR>gv")
+map('v', '<M-k>', ":m '<-2<CR>gv")
 
 -- Terminal
-tmap('<Esc>', '<C-\\><C-n>')
-tmap('<C-j>', '<C-\\><C-N><C-w>j')
-tmap('<C-k>', '<C-\\><C-N><C-w>k')
-tmap('<C-h>', '<C-\\><C-N><C-w>h')
-tmap('<C-l>', '<C-\\><C-N><C-w>l')
+map('t', '<Esc>', '<C-\\><C-n>')
+map('t', '<C-j>', '<C-\\><C-N><C-w>j')
+map('t', '<C-k>', '<C-\\><C-N><C-w>k')
+map('t', '<C-h>', '<C-\\><C-N><C-w>h')
+map('t', '<C-l>', '<C-\\><C-N><C-w>l')
