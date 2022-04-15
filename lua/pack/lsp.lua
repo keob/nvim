@@ -202,20 +202,3 @@ lspconfig.clangd.setup({
     capabilities = capabilities,
     single_file_support = true,
 })
-
-lspconfig.tsserver.setup({
-    cmd = { 'typescript-language-server', '--stdio' },
-    filetypes = {
-        'javascript',
-        'typescript',
-        'javascript.jsx',
-        'typescript.tsx',
-        'javascriptreact',
-        'typescriptreact',
-    },
-    on_attach = enhance_attach,
-    capabilities = capabilities,
-    init_options = {
-        hostInfo = 'neovim',
-    },
-})
