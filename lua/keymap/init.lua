@@ -47,14 +47,18 @@ map('n', '<leader>sa', 'ggVG')
 map('n', '<leader>se', 'VG')
 map('n', '<leader>sh', 'Vgg')
 
--- Tab
+-- Stay in indent mode
+map('v', '<', '<gv')
+map('v', '>', '>gv')
+
+-- Tab navigation
 map('n', '<leader>tc', ':tabclose<CR>')
 map('n', '<leader>tf', ':tabfirst<CR>')
 map('n', '<leader>tl', ':tablast<CR>')
 map('n', '<leader>tn', ':tabn<CR>')
 map('n', '<leader>tp', ':tabp<CR>')
 
--- Buffer
+-- Buffer navigation
 map('n', '<leader>bn', ':bn<CR>')
 map('n', '<leader>bp', ':bp<CR>')
 map('n', '<leader>bd', ':bd<CR>')
@@ -73,7 +77,7 @@ map('n', '<M-Down>', ':res -2<CR>')
 map('n', '<M-Left>', ':vertical resize-2<CR>')
 map('n', '<M-Right>', ':vertical resize+2<CR>')
 
--- Move window
+-- Window navigation
 map('n', '<C-j>', '<C-W>j')
 map('n', '<C-k>', '<C-W>k')
 map('n', '<C-h>', '<C-W>h')
@@ -87,7 +91,7 @@ map('n', '<M-k>', ':m .-2<CR>')
 map('v', '<M-j>', ":m '>+1<CR>gv")
 map('v', '<M-k>', ":m '<-2<CR>gv")
 
--- Terminal
+-- Terminal navigation
 map('t', '<Esc>', '<C-\\><C-n>')
 map('t', '<C-j>', '<C-\\><C-N><C-w>j')
 map('t', '<C-k>', '<C-\\><C-N><C-w>k')
