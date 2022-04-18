@@ -6,11 +6,15 @@ local lspconfig = require('lspconfig')
 
 vim.lsp.set_log_level('warn')
 
-local signs = { Error = '»', Warn = '›', Hint = '•', Info = '≡' }
+local signs = {
+    { name = 'DiagnosticSignError', text = '»' },
+    { name = 'DiagnosticSignWarn', text = '›' },
+    { name = 'DiagnosticSignHint', text = '•' },
+    { name = 'DiagnosticSignInfo', text = '≡' },
+}
 
-for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+for _, sign in pairs(signs) do
+    vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = sign.name })
 end
 
 local kind_presets = {
@@ -41,19 +45,15 @@ local kind_presets = {
     TypeParameter = '  ',
 }
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        virtual_text = false,
-        -- virtual_text = {
-        --     spacing = 4,
-        --     prefix = '•',
-        -- },
-        signs = true,
-        underline = false,
-        update_in_insert = true,
-    }
-)
+local diagnostic_config = {
+    signs = true,
+    underline = false,
+    virtual_text = false,
+    severity_sort = true,
+    update_in_insert = true,
+}
+
+vim.diagnostic.config(diagnostic_config)
 
 local enhance_attach = function(client, bufnr)
     api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -95,17 +95,13 @@ cmp.setup({
                 feedkey('<Plug>(vsnip-jump-prev)', '')
             end
         end, { 'i', 's' }),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
-        ['<C-e>'] = cmp.mapping.close(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     formatting = {
         format = function(entry, vim_item)
@@ -121,6 +117,7 @@ cmp.setup({
     },
     experimental = {
         ghost_text = false,
+        native_menu = false,
     },
     sources = {
         { name = 'nvim_lsp' },
@@ -131,12 +128,14 @@ cmp.setup({
 })
 
 cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = 'buffer' },
     },
 })
 
 cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'path' },
     }, {
