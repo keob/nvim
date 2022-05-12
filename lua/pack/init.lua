@@ -63,10 +63,5 @@ return require('packer').startup({
             end,
             prompt_border = 'single',
         },
-        git = {
-            clone_timeout = 600,
-        },
-        auto_clean = true,
-        compile_on_sync = true,
     },
 })
