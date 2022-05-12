@@ -8,6 +8,8 @@ require('nvim-treesitter.configs').setup({
         'rust',
         'lua',
         'vim',
+        'json',
+        'toml',
         'make',
         'cmake',
         'ninja',
@@ -18,5 +20,6 @@ require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
         disable = {},
+        use_languagetree = true,
     },
 })
