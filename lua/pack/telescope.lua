@@ -25,7 +25,7 @@ require('telescope').setup({
         sorting_strategy = 'ascending',
         scroll_strategy = 'cycle',
         layout_strategy = 'horizontal',
-        path_display = { 'truncate' },
+        path_display = { 'absolute' },
         file_ignore_patterns = { '.git', 'node_modules', 'build', 'target' },
         layout_config = {
             prompt_position = 'top',
