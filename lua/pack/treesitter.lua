@@ -3,6 +3,7 @@ require('nvim-treesitter.configs').setup({
         'c',
         'cpp',
         'go',
+        'nix',
         'gomod',
         'gowork',
         'rust',
