@@ -30,7 +30,7 @@ map('n', '<leader>fgb', ':Telescope git_branches<CR>')
 map('n', '<leader>fb', ':Telescope buffers<CR>')
 map('n', '<leader>fh', ':Telescope help_tags<CR>')
 map('n', '<leader>fl', ':Telescope live_grep<CR>')
-map('n', '<leader>fs', ':Telescope find_files hidden=true<CR>')
+map('n', '<leader>fs', ':Telescope find_files<CR>')
 
 -- Packer
 map('n', '<leader>pi', ':PackerInstall<CR>')
