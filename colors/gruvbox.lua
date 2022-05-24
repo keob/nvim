@@ -309,7 +309,7 @@ local base = {
         bold = vim.g.gruvbox_bold,
         italic = vim.g.gruvbox_italic,
     } or { link = 'GruvboxBlueUnderline' },
-    StatusLine = { fg = bg2, bg = fg1, reverse = vim.g.gruvbox_inverse },
+    StatusLine = { fg = bg2, bg = fg1, bold = vim.g.gruvbox_bold, reverse = vim.g.gruvbox_inverse },
     StatusLineNC = { fg = bg1, bg = fg4, reverse = vim.g.gruvbox_inverse },
     TabLineFill = { fg = bg4, bg = bg1, reverse = vim.g.gruvbox_invert_tabline },
     TabLine = { link = 'TabLineFill' },
@@ -840,14 +840,4 @@ local langs = merge({
 local specs = { base, langs, plugins }
 local spec = merge(specs)
 
-function load()
-    if vim.version().minor < 7 then
-        vim.api.nvim_err_writeln('gruvbox.nvim: you must use neovim 0.7 or higher!')
-        return
-    end
-
-    vim.opt.termguicolors = true
-    add_highlights(spec)
-end
-
-load()
+add_highlights(spec)

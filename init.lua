@@ -2,4 +2,4 @@ require('core')
 require('pack')
 require('keymap')
 
- vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme dracula')
