@@ -8,6 +8,7 @@ if vim.fn.exists('syntax_on') then
     vim.cmd('syntax reset')
 end
 
+-- dracula settings handler
 local settings = {
     bold = true,
     italic = true,
@@ -22,19 +23,6 @@ for k, val in pairs(settings) do
     if vim.g[key] == nil then
         vim.g[key] = val
     end
-end
-
-function get_color_from_var(color, default, colors)
-    if color == nil then
-        return default
-    end
-
-    local c = colors[color]
-    if c == nil then
-        print(string.format('%s color could not be found, using default', color))
-        return default
-    end
-    return c
 end
 
 function merge(tbls)
