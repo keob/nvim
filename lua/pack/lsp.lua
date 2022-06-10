@@ -76,6 +76,10 @@ cmp.setup({
             vim.fn['vsnip#anonymous'](args.body)
         end,
     },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     mapping = {
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -172,13 +176,12 @@ lspconfig.rust_analyzer.setup({
     settings = {
         ['rust-analyzer'] = {
             assist = {
-                importGranularity = 'module',
-                importPrefix = 'by_self',
+                importPrefix = 'plain',
+                importGranularity = 'crate',
             },
             cargo = {
-                allFeatures = true,
                 autoreload = true,
-                loadOutDirsFromCheck = true,
+                -- features = { 'all' },
             },
         },
     },
