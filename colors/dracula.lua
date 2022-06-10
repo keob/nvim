@@ -89,7 +89,7 @@ local base = {
     DraculaFgUnderline = { fg = colors.fg, bg = colors.none, underline = vim.g.dracula_underline },
     DraculaFgBold = { fg = colors.fg, bg = colors.none, bold = vim.g.dracula_bold },
 
-    DraculaComment = { fg = colors.comment },
+    DraculaComment = { fg = colors.comment, italic = vim.g.dracula_italic },
     DraculaCommentBold = { fg = colors.comment, bg = colors.none, bold = vim.g.dracula_bold },
 
     DraculaSelection = { fg = colors.none, bg = colors.selection },
