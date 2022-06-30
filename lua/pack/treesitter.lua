@@ -7,8 +7,6 @@ require('nvim-treesitter.configs').setup({
         'zig',
         'lua',
         'vim',
-        'fish',
-        'bash',
         'perl',
         'rust',
         'json',

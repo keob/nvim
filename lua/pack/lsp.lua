@@ -4,7 +4,7 @@ local api = vim.api
 local cmp = require('cmp')
 local lspconfig = require('lspconfig')
 
-vim.lsp.set_log_level('warn')
+vim.lsp.set_log_level(2)
 
 local signs = {
     { name = 'DiagnosticSignError', text = '»' },
@@ -175,10 +175,6 @@ lspconfig.rust_analyzer.setup({
     capabilities = capabilities,
     settings = {
         ['rust-analyzer'] = {
-            assist = {
-                importPrefix = 'plain',
-                importGranularity = 'crate',
-            },
             cargo = {
                 autoreload = true,
                 -- features = { 'all' },
