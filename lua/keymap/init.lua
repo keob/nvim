@@ -17,7 +17,7 @@ map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 map('n', '<leader>fm', ':lua vim.lsp.buf.formatting()<CR>')
 map('n', '<leader>gm', ':lua vim.diagnostic.goto_prev()<CR>')
 map('n', '<leader>gn', ':lua vim.diagnostic.goto_next()<CR>')
-map('n', '<leader>q', ':lua vim.diagnostic.setloclist()<CR>')
+map('n', '<leader>gl', ':lua vim.diagnostic.setloclist()<CR>')
 map('n', '<leader>e', ':lua vim.diagnostic.open_float()<CR>')
 map('n', '<leader>sd', ':lua vim.lsp.buf.document_symbol()<CR>')
 map('n', '<leader>sw', ':lua vim.lsp.buf.workspace_symbol()<CR>')
@@ -42,7 +42,7 @@ map('n', '<leader>pc', ':PackerCompile<CR>')
 
 -- Save Quit
 map('n', '<leader>w', ':w<CR>')
-map('n', '<leader><leader>q', ':q!<CR>')
+map('n', '<leader>q', ':q!<CR>')
 map('n', '<leader>x', ':wqa<CR>')
 
 -- Select

@@ -76,10 +76,6 @@ cmp.setup({
             vim.fn['vsnip#anonymous'](args.body)
         end,
     },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
     mapping = {
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -168,21 +164,6 @@ lspconfig.gopls.setup({
     },
 })
 
-lspconfig.rust_analyzer.setup({
-    cmd = { 'rust-analyzer' },
-    filetypes = { 'rust' },
-    on_attach = enhance_attach,
-    capabilities = capabilities,
-    settings = {
-        ['rust-analyzer'] = {
-            cargo = {
-                autoreload = true,
-                -- features = { 'all' },
-            },
-        },
-    },
-})
-
 lspconfig.clangd.setup({
     cmd = {
         'clangd',
@@ -199,4 +180,19 @@ lspconfig.clangd.setup({
     on_attach = enhance_attach,
     capabilities = capabilities,
     single_file_support = true,
+})
+
+lspconfig.rust_analyzer.setup({
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    on_attach = enhance_attach,
+    capabilities = capabilities,
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                autoreload = true,
+                -- features = { 'all' },
+            },
+        },
+    },
 })
