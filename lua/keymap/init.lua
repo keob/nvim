@@ -42,8 +42,9 @@ map('n', '<leader>pc', ':PackerCompile<CR>')
 
 -- Save Quit
 map('n', '<leader>w', ':w<CR>')
-map('n', '<leader>q', ':q!<CR>')
+map('n', '<leader>q', ':q<CR>')
 map('n', '<leader>x', ':wqa<CR>')
+map('n', '<leader><leader>q', ':q!<CR>')
 
 -- Select
 map('n', '<leader>sa', 'ggVG')

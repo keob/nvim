@@ -13,11 +13,6 @@ return require('packer').startup(function()
     })
 
     use({
-        'windwp/nvim-autopairs',
-        config = load_config('autopairs'),
-    })
-
-    use({
         'neovim/nvim-lspconfig',
         config = load_config('lsp'),
     })
