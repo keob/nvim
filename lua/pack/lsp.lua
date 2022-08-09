@@ -147,9 +147,14 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
 )
 
+local lsp_flags = {
+  debounce_text_changes = 150,
+}
+
 lspconfig.gopls.setup({
     cmd = { 'gopls', 'serve' },
     filetypes = { 'go' },
+    flags = lsp_flags,
     on_attach = enhance_attach,
     capabilities = capabilities,
     settings = {
@@ -177,6 +182,7 @@ lspconfig.clangd.setup({
         '--enable-config',
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+    flags = lsp_flags,
     on_attach = enhance_attach,
     capabilities = capabilities,
     single_file_support = true,
@@ -185,6 +191,7 @@ lspconfig.clangd.setup({
 lspconfig.rust_analyzer.setup({
     cmd = { 'rust-analyzer' },
     filetypes = { 'rust' },
+    flags = lsp_flags,
     on_attach = enhance_attach,
     capabilities = capabilities,
     settings = {
