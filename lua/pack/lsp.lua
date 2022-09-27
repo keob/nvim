@@ -148,7 +148,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 )
 
 local lsp_flags = {
-  debounce_text_changes = 150,
+    debounce_text_changes = 150,
 }
 
 lspconfig.gopls.setup({
@@ -160,8 +160,11 @@ lspconfig.gopls.setup({
     settings = {
         gopls = {
             analyses = {
-                unusedparams = true,
+                useany = true,
+                nilness = true,
                 unusedwrite = true,
+                unusedparams = true,
+                unusedvariable = true,
             },
             staticcheck = true,
             linksInHover = false,
@@ -178,7 +181,6 @@ lspconfig.clangd.setup({
         '--clang-tidy',
         '--completion-style=detailed',
         '--header-insertion=iwyu',
-        '--inlay-hints',
         '--enable-config',
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
@@ -198,7 +200,9 @@ lspconfig.rust_analyzer.setup({
         ['rust-analyzer'] = {
             cargo = {
                 autoreload = true,
-                -- features = { 'all' },
+            },
+            checkOnSave = {
+                command = 'clippy',
             },
         },
     },
