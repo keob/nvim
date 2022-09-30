@@ -169,7 +169,9 @@ local base = {
     DraculaDiffText = { fg = colors.bg, bg = colors.orange },
     DraculaDiffDelete = { fg = colors.red, bg = colors.bgdark },
 
+    FloatBorder = { fg = colors.white, },
     Normal = { fg = colors.fg, bg = colors.bg },
+    NormalFloat = { fg = colors.fg, bg = colors.bg },
 
     StatusLine = { fg = colors.none, bg = colors.bglighter, bold = vim.g.dracula_bold },
     StatusLineNC = { fg = colors.none, bg = colors.bglight },
@@ -233,12 +235,28 @@ local base = {
 
     DiagnosticInfo = { link = 'DraculaCyan' },
     DiagnosticHint = { link = 'DraculaCyan' },
-    DiagnosticError = { link = 'DraculaError' },
     DiagnosticWarn = { link = 'DraculaOrange' },
-    DiagnosticUnderlineError = { link = 'DraculaErrorLine' },
-    DiagnosticUnderlineHint = { link = 'DraculaInfoLine' },
+    DiagnosticError = { link = 'DraculaError' },
+
+    DiagnosticSignInfo = { link = 'DraculaCyan', },
+    DiagnosticSignHint = { link = 'DraculaCyan', },
+    DiagnosticSignWarn = { link = 'DraculaOrange', },
+    DiagnosticSignError = { link = 'DraculaError', },
+
+    DiagnosticFloatingInfo = { link = 'DraculaCyan', },
+    DiagnosticFloatingHint = { link = 'DraculaCyan', },
+    DiagnosticFloatingWarn = { link = 'DraculaOrange', },
+    DiagnosticFloatingError = { link = 'DraculaError', },
+
+    DiagnosticVirtualTextInfo = { link = 'DraculaCyan', },
+    DiagnosticVirtualTextHint = { link = 'DraculaCyan', },
+    DiagnosticVirtualTextWarn = { link = 'DraculaOrange', },
+    DiagnosticVirtualTextError = { link = 'DraculaError', },
+
     DiagnosticUnderlineInfo = { link = 'DraculaInfoLine' },
+    DiagnosticUnderlineHint = { link = 'DraculaInfoLine' },
     DiagnosticUnderlineWarn = { link = 'DraculaWarnLine' },
+    DiagnosticUnderlineError = { link = 'DraculaErrorLine' },
 
     WinSeparator = { link = 'DraculaWinSeparator' },
 
@@ -377,6 +395,16 @@ local plugins = {
     CmpItemKindOperator = base.DraculaPink,
     CmpItemKindTypeParameter = base.DraculaCyan,
     CmpItemMenu = base.Comment,
+
+    -- Telescope
+    TelescopePromptBorder = { fg = colors.comment, },
+    TelescopeResultsBorder = { fg = colors.comment, },
+    TelescopePreviewBorder = { fg = colors.comment, },
+    TelescopeMatching = { fg = colors.green, },
+    TelescopePromptPrefix = { fg = colors.purple, },
+    TelescopeNormal = { fg = colors.fg, bg = colors.bg, },
+    TelescopeSelection = { fg = colors.white, bg = colors.selection, },
+    TelescopeMultiSelection = { fg = colors.purple, bg = colors.selection, },
 }
 
 local css = {

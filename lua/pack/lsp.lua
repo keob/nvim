@@ -51,9 +51,25 @@ local diagnostic_config = {
     virtual_text = false,
     severity_sort = true,
     update_in_insert = true,
+    float = {
+        focused = false,
+        style = 'minimal',
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
 }
 
 vim.diagnostic.config(diagnostic_config)
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'rounded',
+})
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = 'rounded',
+})
 
 local enhance_attach = function(client, bufnr)
     api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -103,6 +119,10 @@ cmp.setup({
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = fmt('%s %s', kind_presets[vim_item.kind], vim_item.kind)
@@ -143,9 +163,7 @@ cmp.setup.cmdline(':', {
     }),
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local lsp_flags = {
     debounce_text_changes = 150,
@@ -182,6 +200,7 @@ lspconfig.clangd.setup({
         '--completion-style=detailed',
         '--header-insertion=iwyu',
         '--enable-config',
+        '--pch-storage=disk',
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
     flags = lsp_flags,
