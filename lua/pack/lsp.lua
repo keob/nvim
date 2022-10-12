@@ -7,10 +7,10 @@ local lspconfig = require('lspconfig')
 vim.lsp.set_log_level(2)
 
 local signs = {
-    { name = 'DiagnosticSignError', text = '»' },
-    { name = 'DiagnosticSignWarn', text = '›' },
-    { name = 'DiagnosticSignHint', text = '•' },
     { name = 'DiagnosticSignInfo', text = '≡' },
+    { name = 'DiagnosticSignHint', text = '•' },
+    { name = 'DiagnosticSignWarn', text = '›' },
+    { name = 'DiagnosticSignError', text = '»' },
 }
 
 for _, sign in pairs(signs) do
@@ -184,6 +184,7 @@ lspconfig.gopls.setup({
                 unusedparams = true,
                 unusedvariable = true,
             },
+            -- gofumpt = true,
             staticcheck = true,
             linksInHover = false,
         },

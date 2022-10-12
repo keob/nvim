@@ -1,4 +1,5 @@
 require('core.options')
+require('core.keymap')
 
 local disable_distribution_plugins = function()
     vim.g.loaded_gzip = 1
