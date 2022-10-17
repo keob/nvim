@@ -1,6 +1,5 @@
 local fmt = string.format
 
-local api = vim.api
 local cmp = require('cmp')
 local lspconfig = require('lspconfig')
 
@@ -72,7 +71,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 local enhance_attach = function(client, bufnr)
-    api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 local has_words_before = function()
@@ -163,7 +162,7 @@ cmp.setup.cmdline(':', {
     }),
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local lsp_flags = {
     debounce_text_changes = 150,
