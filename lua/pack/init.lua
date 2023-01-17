@@ -9,11 +9,6 @@ return require('packer').startup({
         use({ 'wbthomason/packer.nvim' })
 
         use({
-            'numToStr/Comment.nvim',
-            config = load_config('comment'),
-        })
-
-        use({
             'neovim/nvim-lspconfig',
             config = load_config('lsp'),
         })
