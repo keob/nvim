@@ -162,7 +162,7 @@ local base = {
     },
     DraculaSearch = { fg = colors.green, bg = colors.none, reverse = vim.g.dracula_inverse },
     DraculaBoundary = { fg = colors.comment, bg = colors.bgdark },
-    DraculaWinSeparator = { fg = colors.comment, bg = colors.bgdark },
+    DraculaWinSeparator = { fg = colors.comment, bg = colors.none },
     DraculaLink = { fg = colors.cyan, bg = colors.none, underline = vim.g.dracula_underline },
 
     DraculaDiffChange = { fg = colors.orange, bg = colors.none },
