@@ -91,7 +91,7 @@ cmp.setup({
             vim.fn['vsnip#anonymous'](args.body)
         end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert {
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -138,12 +138,12 @@ cmp.setup({
         ghost_text = false,
         native_menu = false,
     },
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
         { name = 'buffer' },
         { name = 'path' },
-    },
+    }),
 })
 
 cmp.setup.cmdline('/', {
@@ -170,7 +170,7 @@ local lsp_flags = {
 
 lspconfig.gopls.setup({
     cmd = { 'gopls', 'serve' },
-    filetypes = { 'go' },
+    filetypes = { 'go', 'gomod', 'gowork' },
     flags = lsp_flags,
     on_attach = enhance_attach,
     capabilities = capabilities,
