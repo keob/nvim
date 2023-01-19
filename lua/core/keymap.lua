@@ -52,6 +52,9 @@ map('n', '<leader>pu', '<cmd>PackerUpdate<cr>')
 map('n', '<leader>pc', '<cmd>PackerCompile<cr>')
 map('n', '<leader>pi', '<cmd>PackerInstall<cr>')
 
+-- No Highlight Search
+map('n', '<leader>nh', '<cmd>nohl<cr>')
+
 -- Save Quit
 map('n', '<leader>w', '<cmd>w<cr>')
 map('n', '<leader>q', '<cmd>q<cr>')
@@ -104,8 +107,8 @@ map('n', '<M-j>', '<cmd>m .+1<cr>')
 map('n', '<M-k>', '<cmd>m .-2<cr>')
 
 -- Move block
-map('v', '<M-j>', "<cmd>m '>+1<cr>gv")
-map('v', '<M-k>', "<cmd>m '<-2<cr>gv")
+map('v', '<M-j>', ":m '>+1<cr>gv=gv")
+map('v', '<M-k>', ":m '<-2<cr>gv=gv")
 
 -- Terminal navigation
 map('t', '<Esc>', '<C-\\><C-n>')
