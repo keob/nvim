@@ -1,6 +1,10 @@
+local ok, telescope = pcall(require, 'telescope')
+if not ok then
+    return
+end
+
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
-
 require('telescope').setup({
     defaults = {
         vimgrep_arguments = {
