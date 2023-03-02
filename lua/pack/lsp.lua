@@ -66,6 +66,7 @@ lspconfig.gopls.setup({
             -- gofumpt = true,
             staticcheck = true,
             linksInHover = false,
+            usePlaceholders = true,
         },
     },
 })

@@ -79,7 +79,7 @@ local nvim_options = {
     display = 'lastline',
     laststatus = 2,
     statusline = ' %t%r%m %= %y [ %l • %v ] [ %p%% ] ',
-    signcolumn = 'yes',
+    -- signcolumn = 'yes',
     number = true,
     relativenumber = true,
     linebreak = true,
