@@ -81,7 +81,7 @@ lspconfig.clangd.setup({
         '--completion-style=detailed',
         '--header-insertion=iwyu',
         '--enable-config',
-        '--pch-storage=disk',
+        '--pch-storage=memory',
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
     flags = lsp_flags,
