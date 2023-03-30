@@ -1,7 +1,5 @@
 local fmt = string.format
 
-local cache_dir = vim.fn.stdpath('cache')
-
 local nvim_options = {
     mouse = 'nv',
     background = 'dark',
@@ -17,10 +15,6 @@ local nvim_options = {
     writebackup = false,
     undofile = true,
     swapfile = false,
-    directory = fmt('%s/%s', cache_dir, 'swap/'),
-    undodir = fmt('%s/%s', cache_dir, 'undo/'),
-    backupdir = fmt('%s/%s', cache_dir, 'backup/'),
-    viewdir = fmt('%s/%s', cache_dir, 'view/'),
     history = 2000,
     shada = "!,'1000,<50,s10,h",
     timeoutlen = 500,
