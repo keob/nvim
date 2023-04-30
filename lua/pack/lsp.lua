@@ -107,3 +107,12 @@ lspconfig.rust_analyzer.setup({
         },
     },
 })
+
+lspconfig.neocmake.setup({
+    cmd = { 'neocmakelsp', '--stdio' },
+    filetypes = { 'cmake' },
+    flags = lsp_flags,
+    on_attach = enhance_attach,
+    capabilities = capabilities,
+    single_file_support = true,
+})

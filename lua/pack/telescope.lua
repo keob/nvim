@@ -43,6 +43,7 @@ require('telescope').setup({
         },
         file_ignore_patterns = {
             '%.o',
+            '%.so',
             '%.obj',
             '%.exe',
             '%.out',
@@ -58,6 +59,8 @@ require('telescope').setup({
             'target/',
             '.xmake/',
             '.cache/',
+            '_log',
+            '_deps',
             'node_modules/',
         },
         layout_strategy = 'horizontal',
