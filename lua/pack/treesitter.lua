@@ -19,7 +19,7 @@ treesitter.setup({
     },
     sync_install = true,
     indent = {
-      enable = false,
+        enable = false,
     },
     highlight = {
         enable = true,

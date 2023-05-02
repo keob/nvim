@@ -61,6 +61,8 @@ require('telescope').setup({
             '.cache/',
             '_log',
             '_deps',
+            'zig%-%out',
+            'zig%-%cache',
             'node_modules/',
         },
         layout_strategy = 'horizontal',

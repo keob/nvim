@@ -49,12 +49,25 @@ local feedkey = function(key, mode)
 end
 
 cmp.setup({
+    completion = {
+        completeopt = 'menu,menuone',
+    },
     snippet = {
         expand = function(args)
             vim.fn['vsnip#anonymous'](args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+        }),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -73,17 +86,10 @@ cmp.setup({
                 feedkey('<Plug>(vsnip-jump-prev)', '')
             end
         end, { 'i', 's' }),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({ scrollbar = false }),
+        documentation = cmp.config.window.bordered({ scrollbar = false }),
     },
     formatting = {
         format = function(entry, vim_item)
