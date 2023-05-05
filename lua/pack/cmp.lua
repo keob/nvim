@@ -6,36 +6,32 @@ if not ok then
 end
 
 local kind_presets = {
-    Text = '  ',
-    Method = '  ',
-    Function = '  ',
-    Constructor = '  ',
-    Field = ' ﰠ ',
-    Variable = '  ',
-    Class = ' ﴯ ',
-    Interface = ' ﰮ ',
-    Module = '  ',
-    Property = ' ﰠ ',
-    Unit = '  ',
-    Value = '  ',
-    Enum = '  ',
-    Keyword = '  ',
-    Snippet = '  ',
-    Color = '  ',
-    File = '  ',
-    Reference = '  ',
-    Folder = '  ',
+    Text = ' 󰉿 ',
+    Method = ' 󰆧 ',
+    Function = ' 󰊕 ',
+    Constructor = '  ',
+    Field = ' 󰜢 ',
+    Variable = ' 󰀫 ',
+    Class = ' 󰠱 ',
+    Interface = '  ',
+    Module = '  ',
+    Property = ' 󰜢 ',
+    Unit = ' 󰑭 ',
+    Value = ' 󰎠 ',
+    Enum = ' ',
+    Keyword = ' 󰌋 ',
+    Snippet = '  ',
+    Color = ' 󰏘 ',
+    File = ' 󰈙 ',
+    Reference = ' 󰈇 ',
+    Folder = ' 󰉋 ',
     EnumMember = '  ',
-    Constant = '  ',
-    Struct = '  ',
+    Constant = ' 󰏿 ',
+    Struct = ' 󰙅 ',
     Event = '  ',
-    Operator = '  ',
+    Operator = ' 󰆕 ',
     TypeParameter = '  ',
 }
-
-local enhance_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -94,12 +90,15 @@ cmp.setup({
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = fmt('%s %s', kind_presets[vim_item.kind], vim_item.kind)
+            --[[
             vim_item.menu = ({
                 nvim_lsp = 'LSP',
                 path = 'Path',
                 buffer = 'Buffer',
                 vsnip = 'Snippet',
             })[entry.source.name]
+            ]]
+            --
             return vim_item
         end,
     },

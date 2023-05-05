@@ -13,30 +13,11 @@ vim.g.mapleader = ' '
 map('n', ' ', '')
 map('v', ' ', '')
 
--- LSP
-map('n', 'K', vim.lsp.buf.hover)
-map('n', 'gd', vim.lsp.buf.definition)
-map('n', 'gr', vim.lsp.buf.references)
-map('n', 'gD', vim.lsp.buf.declaration)
-map('n', 'ga', vim.lsp.buf.code_action)
-map('n', 'gi', vim.lsp.buf.implementation)
-map('n', 'gt', vim.lsp.buf.type_definition)
-map('n', '<leader>rn', vim.lsp.buf.rename)
+-- Diagnostic
 map('n', '<leader>gm', vim.diagnostic.goto_prev)
 map('n', '<leader>gn', vim.diagnostic.goto_next)
-map('n', '<leader>gl', vim.diagnostic.setloclist)
 map('n', '<leader>e', vim.diagnostic.open_float)
-map('n', '<leader>ls', vim.lsp.buf.signature_help)
-map('n', '<leader>sd', vim.lsp.buf.document_symbol)
-map('n', '<leader>sw', vim.lsp.buf.workspace_symbol)
-map('n', '<leader>aw', vim.lsp.buf.add_workspace_folder)
-map('n', '<leader>rw', vim.lsp.buf.remove_workspace_folder)
-map('n', '<leader>fm', function()
-    vim.lsp.buf.format({ async = true })
-end)
-map('n', '<leader>lw', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-end)
+map('n', '<leader>gl', vim.diagnostic.setloclist)
 
 -- Telescope
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
