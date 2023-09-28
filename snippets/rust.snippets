@@ -1,0 +1,189 @@
+snippet let "let"
+	let ${1:pat} = ${0:expr};
+
+snippet cst "const"
+	const ${1:name}: ${2:type} = ${0:init};
+
+snippet sts "static"
+	static ${1:name}: ${2:type} = ${0:init};
+
+snippet main "main function"
+	fn main() {
+		${0:VISUAL}
+	}
+
+snippet fn "function"
+	fn ${1:name}(${2:arg}: ${3:type}) -> ${4:ret} {
+		${0:VISUAL}
+	}
+
+snippet if "if block"
+	if ${1:condition} {
+		${0:VISUAL}
+	}
+
+snippet elif "else block"
+	else if ${1:condition} {
+		${0:VISUAL}
+	}
+
+snippet el "else block"
+	else {
+		${0:VISUAL}
+	}
+
+snippet whl "while block"
+	while ${1:condition} {
+		${0:VISUAL}
+	}
+
+snippet for "for loop"
+	for ${1:pat} in ${2:expr} {
+		${0:VISUAL}
+	}
+
+snippet lop "loop block"
+	loop {
+		${0:VISUAL}
+	}
+
+snippet ifl "if let"
+	if let ${1:pat} = ${2:expr} {
+		${0:VISUAL}
+	}
+
+snippet wll "while let"
+	while let ${1:pat} = ${2:expr} {
+		${0:VISUAL}
+	}
+
+snippet mat "match block"
+	match ${1:expr} {
+		${2} => ${0},
+	}
+
+snippet impl "impl block"
+	impl ${1:type} {
+		${0:VISUAL}
+	}
+
+snippet implt "impl trait"
+	impl ${1:trait} for ${2:type} {
+		${0:VISUAL}
+	}
+
+snippet tt "tarit"
+	trait ${1:name} {
+		${0:VISUAL}
+	}
+
+snippet mod "mod"
+	mod ${0:name}
+
+snippet modb "modblock"
+	mod ${1:name} {
+		${0:VISUAL}
+	}
+
+snippet tst "tuple struct"
+	struct ${1:name}(${0:type});
+
+snippet ust "unit struct"
+	struct ${0:name};
+
+snippet st "struct block"
+	struct ${1:name} {
+		${2:field}: ${0:type},
+	}
+
+snippet enm "enum block"
+	enum ${1:name} {
+		${2},
+		${0:VISUAL}
+	}
+
+snippet tas "type alias"
+	type ${1:alias} = ${0:type};
+
+snippet der "derive"
+	#[derive(${0})]
+
+snippet allow "allow"
+	#[allow(${0})]
+
+snippet deny "deny"
+	#[deny(${0})]
+
+snippet mau "macro use"
+	#[macro_use(${0})]
+
+snippet mae "macro export"
+	#[macro_export]
+
+snippet cfg "#[cfg()]"
+	#[cfg(${0})]
+
+snippet mcfg "cfg marco"
+	cfg!(${0})
+
+snippet fmt "format macro"
+	format!(${0})
+
+snippet pnc "panic macro"
+	panic!(${0})
+
+snippet pt "print macro"
+	print!(${0})
+
+snippet pf "print format macro"
+	print!("${1}", ${0})
+
+snippet pln "println macro"
+	println!(${0})
+
+snippet plf "println format macro"
+	println!("${1}", ${0})
+
+snippet stf "stringify macro"
+	stringify!(${0})
+
+snippet vec "vec macro"
+	vec![${0:VISUAL}]
+
+snippet ok "Ok"
+	Ok(${0})
+
+snippet err "Err"
+	Err(${0})
+
+snippet sme "Some"
+	Some(${0})
+
+snippet nn "None"
+	None
+
+snippet mru "macro rules"
+	macro_rules! ${1:name} {
+		${0:VISUAL}
+	}
+
+snippet tf "test function"
+	#[test]
+	fn ${1:name}() {
+		${0:VISUAL}
+	}
+
+snippet bf "bench function"
+	#[bench]
+	fn ${1:name}(b: &mut test::Bencher) {
+		${2:b.iter(|| ${0})}
+	}
+
+snippet inf "inline function"
+	#[inline]
+	${1:pub }fn ${2:name}() {
+		${0}
+	}
+
+snippet todo "Todo"
+	// TODO: ${0:VISUAL}

@@ -1,0 +1,56 @@
+snippet todo "Todo"
+	// TODO: ${0:VISUAL}
+
+snippet main "main function"
+	int main(int argc, char* argv[]) {
+		${0:VISUAL}
+	}
+
+snippet func "function"
+	${1:ret} ${2:name}(${3:arg}) {
+		${0:VISUAL}
+	}
+
+snippet if "if block"
+	if (${1}) {
+		${0:VISUAL}
+	}
+
+snippet el "else block"
+	else (${1}) {
+		${0:VISUAL}
+	}
+
+snippet swi "switch block"
+	switch (${1}) {
+		${0:VISUAL}
+	}
+
+snippet cas "case item"
+	case ${1}:
+		${0:VISUAL};
+
+snippet fr "for loop"
+	for (${1:int} ${2:i} = ${3:0}; ${2} < ${4}; ${2}${5:++}) {
+		${0}
+	}
+
+snippet whl "while loop"
+	while(${1}) {
+		${0:VISUAL}
+	}
+
+snippet dowh "do while loop"
+	do {
+		${0:VISUAL}
+	} while(${1})
+
+snippet st "struct block"
+	struct ${1} {
+		${0:VISUAL};
+	}${2};
+
+snippet enm "enum block"
+	enum ${1} {
+		${0:VISUAL};
+	}${2};
