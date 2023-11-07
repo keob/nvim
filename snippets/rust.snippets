@@ -9,52 +9,52 @@ snippet sts "static"
 
 snippet main "main function"
 	fn main() {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet fn "function"
 	fn ${1:name}(${2:arg}: ${3:type}) -> ${4:ret} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet if "if block"
 	if ${1:condition} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet elif "else block"
 	else if ${1:condition} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet el "else block"
 	else {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet whl "while block"
 	while ${1:condition} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet for "for loop"
 	for ${1:pat} in ${2:expr} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet lop "loop block"
 	loop {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet ifl "if let"
 	if let ${1:pat} = ${2:expr} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet wll "while let"
 	while let ${1:pat} = ${2:expr} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet mat "match block"
@@ -64,17 +64,17 @@ snippet mat "match block"
 
 snippet impl "impl block"
 	impl ${1:type} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet implt "impl trait"
 	impl ${1:trait} for ${2:type} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet tt "tarit"
 	trait ${1:name} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet mod "mod"
@@ -82,7 +82,7 @@ snippet mod "mod"
 
 snippet modb "modblock"
 	mod ${1:name} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet tst "tuple struct"
@@ -99,7 +99,7 @@ snippet st "struct block"
 snippet enm "enum block"
 	enum ${1:name} {
 		${2},
-		${0:VISUAL}
+		${0}
 	}
 
 snippet tas "type alias"
@@ -148,7 +148,7 @@ snippet stf "stringify macro"
 	stringify!(${0})
 
 snippet vec "vec macro"
-	vec![${0:VISUAL}]
+	vec![${0}]
 
 snippet ok "Ok"
 	Ok(${0})
@@ -164,13 +164,13 @@ snippet nn "None"
 
 snippet mru "macro rules"
 	macro_rules! ${1:name} {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet tf "test function"
 	#[test]
 	fn ${1:name}() {
-		${0:VISUAL}
+		${0}
 	}
 
 snippet bf "bench function"
@@ -186,4 +186,4 @@ snippet inf "inline function"
 	}
 
 snippet todo "Todo"
-	// TODO: ${0:VISUAL}
+	// TODO: ${0}

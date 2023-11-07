@@ -60,7 +60,7 @@ local enhance_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>lw', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set('n', '<leader>fm', function()
+    vim.keymap.set('n', '<leader>ff', function()
         vim.lsp.buf.format({ async = true })
     end, bufopts)
 end
@@ -162,4 +162,9 @@ lspconfig.neocmake.setup({
     on_attach = enhance_attach,
     capabilities = capabilities,
     single_file_support = true,
+    init_options = {
+        format = {
+            enable = true,
+        },
+    },
 })
