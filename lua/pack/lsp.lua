@@ -115,7 +115,6 @@ lspconfig.gopls.setup({
 lspconfig.clangd.setup({
     cmd = {
         'clangd',
-        '-j=6',
         '--all-scopes-completion',
         '--background-index',
         '--clang-tidy',
