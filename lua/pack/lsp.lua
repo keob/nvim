@@ -138,11 +138,11 @@ lspconfig.rust_analyzer.setup({
     capabilities = capabilities,
     settings = {
         ['rust-analyzer'] = {
-            cargo = {
-                autoreload = true,
-                buildScripts = {
-                    enable = true,
+            imports = {
+                granularity = {
+                    group = "module",
                 },
+                prefix = "self",
             },
             checkOnSave = {
                 command = 'clippy',

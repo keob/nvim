@@ -1,26 +1,11 @@
 local config = {
-    terminal_colors = true,
+    bold = true,
+    italic = true,
+    inverse = true,
     undercurl = true,
     underline = true,
-    bold = true,
-    italic = {
-        strings = true,
-        emphasis = true,
-        comments = true,
-        operators = false,
-        folds = true,
-    },
     strikethrough = true,
-    invert_selection = false,
-    invert_signs = false,
-    invert_tabline = false,
-    invert_intend_guides = false,
-    inverse = true,
     contrast = '',
-    palette_overrides = {},
-    overrides = {},
-    dim_inactive = false,
-    transparent_mode = false,
 }
 
 local palette = {
@@ -82,13 +67,7 @@ local palette = {
 
 local function get_colors()
     local p = palette
-
-    for color, hex in pairs(config.palette_overrides) do
-        p[color] = hex
-    end
-
     local bg = vim.o.background
-    local contrast = config.contrast
 
     local color_groups = {
         dark = {
@@ -165,28 +144,26 @@ local function get_groups()
     local colors = get_colors()
     local config = config
 
-    if config.terminal_colors then
-        local term_colors = {
-            colors.bg0,
-            colors.neutral_red,
-            colors.neutral_green,
-            colors.neutral_yellow,
-            colors.neutral_blue,
-            colors.neutral_purple,
-            colors.neutral_aqua,
-            colors.fg4,
-            colors.gray,
-            colors.red,
-            colors.green,
-            colors.yellow,
-            colors.blue,
-            colors.purple,
-            colors.aqua,
-            colors.fg1,
-        }
-        for index, value in ipairs(term_colors) do
-            vim.g['terminal_color_' .. index - 1] = value
-        end
+    local term_colors = {
+        colors.bg0,
+        colors.neutral_red,
+        colors.neutral_green,
+        colors.neutral_yellow,
+        colors.neutral_blue,
+        colors.neutral_purple,
+        colors.neutral_aqua,
+        colors.fg4,
+        colors.gray,
+        colors.red,
+        colors.green,
+        colors.yellow,
+        colors.blue,
+        colors.purple,
+        colors.aqua,
+        colors.fg1,
+    }
+    for index, value in ipairs(term_colors) do
+        vim.g['terminal_color_' .. index - 1] = value
     end
 
     local groups = {
@@ -215,27 +192,13 @@ local function get_groups()
         GruvboxAquaBold = { fg = colors.aqua, bold = config.bold },
         GruvboxOrange = { fg = colors.orange },
         GruvboxOrangeBold = { fg = colors.orange, bold = config.bold },
-        GruvboxRedSign = config.transparent_mode
-                and { fg = colors.red, reverse = config.invert_signs }
-            or { fg = colors.red, bg = colors.bg1, reverse = config.invert_signs },
-        GruvboxGreenSign = config.transparent_mode
-                and { fg = colors.green, reverse = config.invert_signs }
-            or { fg = colors.green, bg = colors.bg1, reverse = config.invert_signs },
-        GruvboxYellowSign = config.transparent_mode
-                and { fg = colors.yellow, reverse = config.invert_signs }
-            or { fg = colors.yellow, bg = colors.bg1, reverse = config.invert_signs },
-        GruvboxBlueSign = config.transparent_mode
-                and { fg = colors.blue, reverse = config.invert_signs }
-            or { fg = colors.blue, bg = colors.bg1, reverse = config.invert_signs },
-        GruvboxPurpleSign = config.transparent_mode
-                and { fg = colors.purple, reverse = config.invert_signs }
-            or { fg = colors.purple, bg = colors.bg1, reverse = config.invert_signs },
-        GruvboxAquaSign = config.transparent_mode
-                and { fg = colors.aqua, reverse = config.invert_signs }
-            or { fg = colors.aqua, bg = colors.bg1, reverse = config.invert_signs },
-        GruvboxOrangeSign = config.transparent_mode
-                and { fg = colors.orange, reverse = config.invert_signs }
-            or { fg = colors.orange, bg = colors.bg1, reverse = config.invert_signs },
+        GruvboxRedSign = { fg = colors.red, bg = colors.bg1, reverse = config.invert },
+        GruvboxGreenSign = { fg = colors.green, bg = colors.bg1, reverse = config.invert },
+        GruvboxYellowSign = { fg = colors.yellow, bg = colors.bg1, reverse = config.invert },
+        GruvboxBlueSign = { fg = colors.blue, bg = colors.bg1, reverse = config.invert },
+        GruvboxPurpleSign = { fg = colors.purple, bg = colors.bg1, reverse = config.invert },
+        GruvboxAquaSign = { fg = colors.aqua, bg = colors.bg1, reverse = config.invert },
+        GruvboxOrangeSign = { fg = colors.orange, bg = colors.bg1, reverse = config.invert },
         GruvboxRedUnderline = { undercurl = config.undercurl, sp = colors.red },
         GruvboxGreenUnderline = { undercurl = config.undercurl, sp = colors.green },
         GruvboxYellowUnderline = { undercurl = config.undercurl, sp = colors.yellow },
@@ -243,16 +206,13 @@ local function get_groups()
         GruvboxPurpleUnderline = { undercurl = config.undercurl, sp = colors.purple },
         GruvboxAquaUnderline = { undercurl = config.undercurl, sp = colors.aqua },
         GruvboxOrangeUnderline = { undercurl = config.undercurl, sp = colors.orange },
-        Normal = config.transparent_mode and { fg = colors.fg1, bg = nil }
-            or { fg = colors.fg1, bg = colors.bg0 },
-        NormalFloat = config.transparent_mode and { fg = colors.fg1, bg = nil }
-            or { fg = colors.fg1, bg = colors.bg1 },
-        NormalNC = config.dim_inactive and { fg = colors.fg0, bg = colors.bg1 }
-            or { link = 'Normal' },
+        Normal = { fg = colors.fg1, bg = colors.bg0 },
+        NormalFloat = { fg = colors.fg1, bg = nil },
+        NormalNC = { link = 'Normal' },
         CursorLine = { bg = colors.bg1 },
         CursorColumn = { link = 'CursorLine' },
-        TabLineFill = { fg = colors.bg4, bg = colors.bg1, reverse = config.invert_tabline },
-        TabLineSel = { fg = colors.green, bg = colors.bg1, reverse = config.invert_tabline },
+        TabLineFill = { fg = colors.bg4, bg = colors.bg1, reverse = config.invert },
+        TabLineSel = { fg = colors.green, bg = colors.bg1, reverse = config.invert },
         TabLine = { link = 'TabLineFill' },
         MatchParen = { bg = colors.bg3, bold = config.bold },
         ColorColumn = { bg = colors.bg1 },
@@ -260,7 +220,7 @@ local function get_groups()
         CursorLineNr = { fg = colors.yellow, bg = colors.bg1 },
         NonText = { link = 'GruvboxBg2' },
         SpecialKey = { link = 'GruvboxFg4' },
-        Visual = { bg = colors.bg3, reverse = config.invert_selection },
+        Visual = { bg = colors.bg3, reverse = config.invert },
         VisualNOS = { link = 'Visual' },
         Search = { fg = colors.yellow, bg = colors.bg0, reverse = config.inverse },
         IncSearch = { fg = colors.orange, bg = colors.bg0, reverse = config.inverse },
@@ -271,8 +231,7 @@ local function get_groups()
         StatusLineNC = { fg = colors.bg1, bg = colors.fg4, reverse = config.inverse },
         WinBar = { fg = colors.fg4, bg = colors.bg0 },
         WinBarNC = { fg = colors.fg3, bg = colors.bg1 },
-        WinSeparator = config.transparent_mode and { fg = colors.bg3, bg = nil }
-            or { fg = colors.bg3, bg = colors.bg0 },
+        WinSeparator = { fg = colors.bg3, bg = colors.bg0 },
         WildMenu = { fg = colors.blue, bg = colors.bg2, bold = config.bold },
         Directory = { link = 'GruvboxBlueBold' },
         Title = { link = 'GruvboxGreenBold' },
@@ -283,29 +242,23 @@ local function get_groups()
         WarningMsg = { link = 'GruvboxRedBold' },
         LineNr = { fg = colors.bg4 },
         SignColumn = config.transparent_mode and { bg = nil } or { bg = colors.bg1 },
-        Folded = { fg = colors.gray, bg = colors.bg1, italic = config.italic.folds },
-        FoldColumn = config.transparent_mode and { fg = colors.gray, bg = nil }
-            or { fg = colors.gray, bg = colors.bg1 },
+        Folded = { fg = colors.gray, bg = colors.bg1, italic = config.italic },
+        FoldColumn = { fg = colors.gray, bg = colors.bg1 },
         Cursor = { reverse = config.inverse },
         vCursor = { link = 'Cursor' },
         iCursor = { link = 'Cursor' },
         lCursor = { link = 'Cursor' },
         Special = { link = 'GruvboxOrange' },
-        Comment = { fg = colors.gray, italic = config.italic.comments },
-        Todo = {
-            fg = colors.bg0,
-            bg = colors.yellow,
-            bold = config.bold,
-            italic = config.italic.comments,
-        },
-        Done = { fg = colors.orange, bold = config.bold, italic = config.italic.comments },
+        Comment = { fg = colors.gray, italic = config.italic },
+        Todo = { fg = colors.bg0, bg = colors.yellow, bold = config.bold, italic = config.italic },
+        Done = { fg = colors.orange, bold = config.bold, italic = config.italic },
         Error = { fg = colors.red, bold = config.bold, reverse = config.inverse },
         Statement = { link = 'GruvboxRed' },
         Conditional = { link = 'GruvboxRed' },
         Repeat = { link = 'GruvboxRed' },
         Label = { link = 'GruvboxRed' },
         Exception = { link = 'GruvboxRed' },
-        Operator = { fg = colors.orange, italic = config.italic.operators },
+        Operator = { fg = colors.orange, italic = config.italic },
         Keyword = { link = 'GruvboxRed' },
         Identifier = { link = 'GruvboxBlue' },
         Function = { link = 'GruvboxGreenBold' },
@@ -316,7 +269,7 @@ local function get_groups()
         PreCondit = { link = 'GruvboxAqua' },
         Constant = { link = 'GruvboxPurple' },
         Character = { link = 'GruvboxPurple' },
-        String = { fg = colors.green, italic = config.italic.strings },
+        String = { fg = colors.green, italic = config.italic },
         Boolean = { link = 'GruvboxPurple' },
         Number = { link = 'GruvboxPurple' },
         Float = { link = 'GruvboxPurple' },
@@ -971,7 +924,7 @@ local function get_groups()
         ['@symbol'] = { link = 'Identifier' },
         ['@text'] = { link = 'GruvboxFg1' },
         ['@text.strong'] = { bold = config.bold },
-        ['@text.emphasis'] = { italic = config.italic.emphasis },
+        ['@text.emphasis'] = { italic = config.italic },
         ['@text.underline'] = { underline = config.underline },
         ['@text.strike'] = { strikethrough = config.strikethrough },
         ['@text.title'] = { link = 'Title' },
@@ -1012,14 +965,6 @@ local function get_groups()
         ['@lsp.type.typeParameter'] = { link = '@type.definition' },
         ['@lsp.type.variable'] = { link = '@variable' },
     }
-
-    for group, hl in pairs(config.overrides) do
-        if groups[group] then
-            groups[group].link = nil
-        end
-
-        groups[group] = vim.tbl_extend('force', groups[group] or {}, hl)
-    end
 
     return groups
 end
