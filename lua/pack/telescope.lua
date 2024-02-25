@@ -5,7 +5,8 @@ end
 
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
-require('telescope').setup({
+
+return {
     defaults = {
         vimgrep_arguments = {
             'rg',
@@ -83,4 +84,4 @@ require('telescope').setup({
             -- find_command = { "fd" },
         },
     },
-})
+}

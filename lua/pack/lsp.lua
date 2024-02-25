@@ -140,9 +140,9 @@ lspconfig.rust_analyzer.setup({
         ['rust-analyzer'] = {
             imports = {
                 granularity = {
-                    group = "module",
+                    group = 'module',
                 },
-                prefix = "self",
+                prefix = 'self',
             },
             checkOnSave = {
                 command = 'clippy',

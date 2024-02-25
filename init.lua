@@ -1,4 +1,4 @@
 require('core')
 require('pack')
 
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme dracula')

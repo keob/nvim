@@ -29,9 +29,7 @@ map('n', '<leader>fgc', '<cmd>Telescope git_commits<cr>')
 map('n', '<leader>fgb', '<cmd>Telescope git_branches<cr>')
 
 -- Packer
-map('n', '<leader>pu', '<cmd>PackerUpdate<cr>')
-map('n', '<leader>pc', '<cmd>PackerCompile<cr>')
-map('n', '<leader>pi', '<cmd>PackerInstall<cr>')
+map('n', '<leader>e', '<cmd>Neotree toggle<cr>')
 
 -- No Highlight Search
 map('n', '<leader>nh', '<cmd>nohl<cr>')

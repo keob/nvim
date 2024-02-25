@@ -1,9 +1,4 @@
-local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if not ok then
-    return
-end
-
-treesitter.setup({
+return {
     ensure_installed = {
         'c',
         'go',
@@ -28,4 +23,4 @@ treesitter.setup({
     incremental_selection = {
         enable = true,
     },
-})
+}
