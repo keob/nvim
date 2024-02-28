@@ -59,23 +59,4 @@ require('lazy').setup({
         'echasnovski/mini.comment',
         event = 'VeryLazy',
     },
-    {
-        'nvim-neo-tree/neo-tree.nvim',
-        dependencies = {
-            'MunifTanjim/nui.nvim',
-        },
-        cmd = 'Neotree',
-        config = function()
-            local opts = require('pack.neotree')
-            require('neo-tree').setup(opts)
-        end,
-    },
-    {
-        'nvim-lualine/lualine.nvim',
-        event = 'VeryLazy',
-        config = function()
-            local opts = require('pack.lualine')
-            require('lualine').setup(opts)
-        end,
-    },
 })

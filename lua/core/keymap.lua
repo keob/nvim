@@ -28,9 +28,6 @@ map('n', '<leader>fgs', '<cmd>Telescope git_status<cr>')
 map('n', '<leader>fgc', '<cmd>Telescope git_commits<cr>')
 map('n', '<leader>fgb', '<cmd>Telescope git_branches<cr>')
 
--- Packer
-map('n', '<leader>e', '<cmd>Neotree toggle<cr>')
-
 -- No Highlight Search
 map('n', '<leader>nh', '<cmd>nohl<cr>')
 
