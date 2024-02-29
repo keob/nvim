@@ -48,15 +48,21 @@ require('lazy').setup({
     },
     {
         'echasnovski/mini.pairs',
-        event = 'VeryLazy',
+        config = function()
+            local opts = require('pack.pairs')
+            require('mini.pairs').setup(opts)
+        end
     },
     {
         'echasnovski/mini.surround',
-        keys = {},
-        opts = {},
+        config = function()
+            require('mini.surround').setup()
+        end
     },
     {
         'echasnovski/mini.comment',
-        event = 'VeryLazy',
+        config = function()
+            require('mini.comment').setup({})
+        end
     },
 })
