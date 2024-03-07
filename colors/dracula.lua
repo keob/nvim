@@ -366,6 +366,7 @@ local plugins = {
     TSTagAttribute = base.DraculaGreenItalic,
 
     -- nvim-cmp
+    CmpGhostText = base.Comment,
     CmpItemAbbrDeprecated = base.DraculaError,
     CmpItemAbbrMatch = base.DraculaCyan,
     CmpItemAbbrMatchFuzzy = base.DraculaCyan,

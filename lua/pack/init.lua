@@ -48,21 +48,31 @@ require('lazy').setup({
     },
     {
         'echasnovski/mini.pairs',
+        event = 'VeryLazy',
         config = function()
             local opts = require('pack.pairs')
             require('mini.pairs').setup(opts)
-        end
+        end,
     },
     {
         'echasnovski/mini.surround',
         config = function()
-            require('mini.surround').setup()
-        end
+            local opts = require('pack.surround')
+            require('mini.surround').setup(opts)
+        end,
     },
     {
         'echasnovski/mini.comment',
+        event = 'VeryLazy',
         config = function()
             require('mini.comment').setup({})
-        end
+        end,
+    },
+}, {
+    install = {
+        colorscheme = { 'dracula' },
+    },
+    ui = {
+        border = 'rounded',
     },
 })

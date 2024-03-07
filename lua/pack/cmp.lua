@@ -10,7 +10,7 @@ if not ok then
     return
 end
 
-local kind_presets = {
+local icons = {
     Text = ' 󰉿 ',
     Method = ' 󰆧 ',
     Function = ' 󰊕 ',
@@ -58,14 +58,19 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true, }),
+        ["<S-CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
+            select = true,
         }),
+        ["<C-CR>"] = function(fallback)
+            cmp.abort()
+            fallback()
+        end,
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -92,15 +97,18 @@ cmp.setup({
         documentation = cmp.config.window.bordered({ scrollbar = false }),
     },
     formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = fmt('%s %s', kind_presets[vim_item.kind], vim_item.kind)
-            vim_item.menu = ({
-                nvim_lsp = 'LSP',
-                path = 'Path',
-                buffer = 'Buffer',
-                vsnip = 'Snippet',
-            })[entry.source.name]
-            return vim_item
+        format = function(entry, item)
+            if icons[item.kind] then
+                item.kind = icons[item.kind] .. item.kind
+            end
+            -- item.kind = fmt('%s %s', icons[item.kind], item.kind)
+           -- item.menu = ({
+           --     nvim_lsp = 'LSP',
+           --     path = 'Path',
+           --     buffer = 'Buffer',
+           --     vsnip = 'Snippet',
+           -- })[entry.source.name]
+            return item
         end,
     },
     experimental = {
